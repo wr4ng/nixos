@@ -15,6 +15,8 @@
 		userEmail = "madscwn@gmail.com";
 	};
 
+	programs.gh.enable = true;
+
 	imports = [
 		inputs.self.homeManagerModules.kitty
 		inputs.self.homeManagerModules.webcord
@@ -88,7 +90,6 @@
 		nerd-fonts.jetbrains-mono
 		zsh-powerlevel10k
 		fzf
-		gh
 		ripgrep
 		(google-chrome.override {
 			commandLineArgs = [
