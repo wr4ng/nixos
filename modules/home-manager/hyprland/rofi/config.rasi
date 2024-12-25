@@ -1,0 +1,15 @@
+configuration {
+  show-icons: true;
+  terminal: "kitty";
+  display-drun: "";
+  location: 0;
+  disable-history: false;
+  hide-scrollbar: true;
+  drun-display-format: "{icon} {name}";
+}
+
+//@theme "Dracula"
+//@theme "windows11-grid-dark"
+@theme "spotlight-dark"
+//@theme "launchpad"
+//@theme "rounded-purple-dark"

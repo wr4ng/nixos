@@ -1,13 +1,27 @@
 { inputs, lib, pkgs, ... }:
 {
+	imports = [
+		inputs.self.homeManagerModules.kitty
+		inputs.self.homeManagerModules.hyprland
+		inputs.self.homeManagerModules.webcord
+	];
+
+	# Enable and configure modules
+	hyprland.enable = true;
+	waybar.backlight.enable = false; # No backlight on desktop
+	kitty.enable = true;
+	kitty.fontSize = 14;
+	webcord.enable = true;
+
 	# Home Manager needs a bit of information about you and the paths it should
 	# manage.
 	home.username = "wr4ng";
 	home.homeDirectory = "/home/wr4ng";
 
-	programs.zoxide.enable = true;
-
 	nixpkgs.config.allowUnfree = true;
+
+	programs.zoxide.enable = true;
+	programs.lazygit.enable = true;
 
 	programs.git = {
 		enable = true;
@@ -15,17 +29,8 @@
 		userEmail = "madscwn@gmail.com";
 	};
 
+
 	programs.gh.enable = true;
-
-	imports = [
-		inputs.self.homeManagerModules.kitty
-		inputs.self.homeManagerModules.webcord
-	];
-
-	kitty.enable = true;
-	kitty.fontSize = 14;
-
-	webcord.enable = true;
 
 	home.pointerCursor = lib.mkForce {
 		gtk.enable = true;
@@ -40,7 +45,20 @@
 			name = "Dracula";
 			package = pkgs.dracula-theme;
 		};
-		gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+		gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
+		gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
+	};
+
+	dconf.settings = {
+		"org/gnome/desktop/interface" = {
+			color-scheme = "prefer-dark";
+		};
+	};
+
+	qt = {
+		enable = true;
+		style.name = "adwaita-dar";
+		style.package = pkgs.adwaita-qt;
 	};
 
 	programs.zsh = {
@@ -74,7 +92,6 @@
 		'';
 	};
 
-
 	# This value determines the Home Manager release that your configuration is
 	# compatible with. This helps avoid breakage when a new Home Manager release
 	# introduces backwards incompatible changes.
@@ -93,24 +110,10 @@
 		ripgrep
 		(google-chrome.override {
 			commandLineArgs = [
-				"--enable-features=UseOzonePlatform"
-				"--ozone-platform=wayland"
+				"--ozone-platform-hint=auto"
+				"--disable-gpu"
 			];
 		})
-
-		inputs.hyprland-qtutils.packages."${pkgs.system}".default
-		# # It is sometimes useful to fine-tune packages, for example, by applying
-		# # overrides. You can do that directly here, just don't forget the
-		# # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-		# # fonts?
-		# (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-		# # You can also create simple shell scripts directly inside your
-		# # configuration. For example, this adds a command 'my-hello' to your
-		# # environment:
-		# (pkgs.writeShellScriptBin "my-hello" ''
-		#   echo "Hello, ${config.home.username}!"
-		# '')
 	];
 
 	# Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -119,26 +122,8 @@
 		".p10k.zsh".text = builtins.readFile ./.p10k.zsh;
 	};
 
-	# Home Manager can also manage your environment variables through
-	# 'home.sessionVariables'. These will be explicitly sourced when using a
-	# shell provided by Home Manager. If you don't want to manage your shell
-	# through Home Manager then you have to manually source 'hm-session-vars.sh'
-	# located at either
-	#
-	#  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-	#
-	# or
-	#
-	#  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-	#
-	# or
-	#
-	#  /etc/profiles/per-user/wr4ng/etc/profile.d/hm-session-vars.sh
-	#
 	home.sessionVariables = {
 		EDITOR = "nvim";
-		#HYPRCURSOR_THEME = "Bibata-Modern-Classic";
-		#HYPRCURSOR_SIZE = 20;
 	};
 
 	# Let Home Manager install and manage itself.

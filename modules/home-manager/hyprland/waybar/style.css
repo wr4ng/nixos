@@ -1,0 +1,68 @@
+* {
+	font-family: JetBrainsMono Nerd Font, monospace;
+	font-weight: bold;
+	font-size: 14px;
+	min-height: 0;
+	color: #bd93f9;
+	min-height: 0;
+	background-color: transparent;
+}
+
+window#waybar {
+	border-radius: 12px;
+}
+
+#workspaces {
+	margin-left: 5px;
+}
+
+#custom-separator {
+	padding-right: 8px;
+	padding-left: 8px;
+}
+
+#network {
+	padding: 0 0 0 0px; /* Adjust horizontally */
+	margin: 0;          /* Adjust overall spacing */
+}
+
+#workspaces button {
+	background-color: transparent;
+}
+
+#workspaces button.hover {
+	background-color: transparent;
+}
+
+#workspaces button.active {
+	background-color: transparent;
+}
+
+#battery {
+	margin-right: 24px;
+	background: transparent;
+}
+
+#battery.critical:not(.charging) {
+	animation-name: blink;
+	animation-duration: 0.25s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+@keyframes blink {
+	to {
+		color: #e26c7c;
+	}
+}
+
+#clock {
+	margin-right: 24px;
+}
+
+#custom-power {
+	font-size: 20px;
+	margin-right: 22px;
+	background: transparent;
+}
