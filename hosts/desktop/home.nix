@@ -4,6 +4,7 @@
 		inputs.self.homeManagerModules.kitty
 		inputs.self.homeManagerModules.hyprland
 		inputs.self.homeManagerModules.webcord
+		inputs.self.homeManagerModules.nvim
 	];
 
 	# Enable and configure modules
@@ -12,6 +13,7 @@
 	kitty.enable = true;
 	kitty.fontSize = 14;
 	webcord.enable = true;
+	nvim.enable = true;
 
 	# Home Manager needs a bit of information about you and the paths it should
 	# manage.
@@ -122,9 +124,6 @@
 		".p10k.zsh".text = builtins.readFile ./.p10k.zsh;
 	};
 
-	home.sessionVariables = {
-		EDITOR = "nvim";
-	};
 
 	# Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;

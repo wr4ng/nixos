@@ -104,7 +104,6 @@
     packages = with pkgs; [
 	vim
 	git
-	neovim
 
 	wget
 	htop

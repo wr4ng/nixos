@@ -12,6 +12,7 @@
 	kitty.enable = true;
 	kitty.fontSize = 14;
 	webcord.enable = true;
+	nvim.enable = true;
 
 	# Home Manager needs a bit of information about you and the paths it should
 	# manage.
@@ -120,10 +121,6 @@
 	# plain files is through 'home.file'.
 	home.file = {
 		".p10k.zsh".text = builtins.readFile ./.p10k.zsh;
-	};
-
-	home.sessionVariables = {
-		EDITOR = "nvim";
 	};
 
 	# Let Home Manager install and manage itself.
