@@ -14,6 +14,7 @@
 	# Enable and configure modules
 	# Bootloader
 	grub.enable = true;
+	grub.useOSProber = true;
 	grub.gfxmodeEfi = "2560x1440"; # Set main monitor size for grub menu
 	# GPU drivers
 	nvidia-drivers.enable = true;
