@@ -2,9 +2,9 @@
 /* Author: Newman Sanchez (https://github.com/newmanls) */
 
 * {
-    font: "Montserrat 16";
+    font: "Jetbrains Mono 16";
 
-    bg0:    #1C1C1CE6;
+    bg0:    #1a1a1aE6;
     bg1:    #7E7E7E80;
     bg2:    #0860f2E6;
 

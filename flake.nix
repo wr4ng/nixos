@@ -15,8 +15,9 @@
 		nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
 	};
 
-	outputs = { self, nixpkgs, home-manager, ... }@inputs:
-	{
+	outputs = { self, nixpkgs, ... } @ inputs: {
+
+		nixosModules = import ./modules/nixos;
 		homeManagerModules = import ./modules/home-manager;
 
 		nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
@@ -24,8 +25,7 @@
 			system = "x86_64-linux";
 			modules = [
 				./hosts/desktop/configuration.nix
-					./modules/nixos
-					inputs.home-manager.nixosModules.default
+				inputs.home-manager.nixosModules.default
 			];
 		};
 
@@ -34,8 +34,8 @@
 			system = "x86_64-linux";
 			modules = [
 				./hosts/yoga/configuration.nix
-					./modules/nixos
-					inputs.home-manager.nixosModules.default
+				./modules/nixos
+				inputs.home-manager.nixosModules.default
 			];
 		};
 	};

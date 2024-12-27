@@ -1,10 +1,8 @@
 { inputs, lib, pkgs, ... }:
 {
+	# Import home-manager modules
 	imports = [
-		inputs.self.homeManagerModules.kitty
-		inputs.self.homeManagerModules.hyprland
-		inputs.self.homeManagerModules.webcord
-		inputs.self.homeManagerModules.nvim
+		inputs.self.homeManagerModules
 	];
 
 	# Enable and configure modules
@@ -20,7 +18,14 @@
 	home.username = "wr4ng";
 	home.homeDirectory = "/home/wr4ng";
 
+	# Allow unfree packages
 	nixpkgs.config.allowUnfree = true;
+
+	# Enable Nix flake support
+	nix = {
+		#package = pkgs.nix;
+		settings.experimental-features = [ "nix-command" "flakes" ];
+	};
 
 	programs.zoxide.enable = true;
 	programs.lazygit.enable = true;
@@ -44,9 +49,13 @@
 	gtk = {
 		enable = true;
 		theme = {
-			name = "Dracula";
-			package = pkgs.dracula-theme;
+			name = "Adwaita-dark";
+			package = pkgs.gnome-themes-extra;
 		};
+		#theme = {
+		#	name = "Dracula";
+		#	package = pkgs.dracula-theme;
+		#};
 		gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
 		gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
 	};
@@ -59,39 +68,8 @@
 
 	qt = {
 		enable = true;
-		style.name = "adwaita-dar";
-		style.package = pkgs.adwaita-qt;
-	};
-
-	programs.zsh = {
-		enable = true;
-		enableCompletion = true;
-		autosuggestion.enable = true;
-		syntaxHighlighting.enable = true;
-
-		shellAliases = {
-			ls="eza --icons --group-directories-first --sort type --color=always";
-			open="xdg-open";
-		};
-		history.size = 10000;
-		oh-my-zsh = {
-			enable = true;
-			plugins = [
-				"git"
-				"golang"
-				"rust"
-				"python"
-				"gh"
-				"sudo"
-				"command-not-found"
-			];
-		};
-		# Enable fzf zsh integration and powerlevel10k.
-		initExtra = ''
-	  eval "$(fzf --zsh)"
-	  source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-	  source ~/.p10k.zsh
-		'';
+		style.name = "adwaita-dark";
+		platformTheme.name = "adwaita";
 	};
 
 	# This value determines the Home Manager release that your configuration is
@@ -107,7 +85,6 @@
 	# environment.
 	home.packages = with pkgs; [
 		nerd-fonts.jetbrains-mono
-		zsh-powerlevel10k
 		fzf
 		ripgrep
 		(google-chrome.override {
@@ -121,7 +98,6 @@
 	# Home Manager is pretty good at managing dotfiles. The primary way to manage
 	# plain files is through 'home.file'.
 	home.file = {
-		".p10k.zsh".text = builtins.readFile ./.p10k.zsh;
 	};
 
 

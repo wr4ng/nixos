@@ -1,9 +1,7 @@
 { inputs, lib, pkgs, ... }:
 {
 	imports = [
-		inputs.self.homeManagerModules.kitty
-		inputs.self.homeManagerModules.hyprland
-		inputs.self.homeManagerModules.webcord
+		inputs.self.homeManagerModules
 	];
 
 	# Enable and configure modules
