@@ -41,6 +41,22 @@
 
 	# Enable bluetooth
 	hardware.bluetooth.enable = true;
+	services.blueman.enable = true;
+
+	# Setup logitech
+	hardware.logitech.wireless.enable = true;
+	hardware.logitech.wireless.enableGraphical = true;
+
+	services.libinput.mouse.accelProfile = "flat";
+
+	services.ratbagd.enable = true;
+
+	environment.systemPackages = with pkgs; [
+		solaar
+		piper
+		spotify
+		pyprland
+	];
 
 	# Set your time zone.
 	time.timeZone = "Europe/Copenhagen";
@@ -76,6 +92,8 @@
 	services.xserver.desktopManager.gnome.enable = true;
 	services.gnome.gnome-keyring.enable = true;
 	security.pam.services.gdm.enableGnomeKeyring = true; # load gnome-keyring at startup
+	security.pam.services.greetd.enableGnomeKeyring = true;
+	security.pam.services.login.enableGnomeKeyring = true;
 
 	# Enable hyprland.
 	programs.hyprland = {
@@ -91,7 +109,10 @@
 	services.printing.enable = true;
 
 	# Enable sound with pipewire.
-	hardware.pulseaudio.enable = false;
+	hardware.pulseaudio = {
+		enable = false;
+		package = pkgs.pulseaudioFull; # Add extra bluetooth codecs
+	};
 	security.rtkit.enable = true;
 	services.pipewire = {
 		enable = true;
@@ -104,12 +125,14 @@
 		# no need to redefine it in your config for now)
 		#media-session.enable = true;
 	};
+	hardware.bluetooth.settings.General.Experimental = true; # To see battery of bluetooth devices
 
 	# Allow unfree packages
 	nixpkgs.config.allowUnfree = true;
 
 	# Polkit setup.
 	security.polkit.enable = true;
+	security.pam.services.hyprlock = {}; # Allow hyprlock to unlock session
 
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions

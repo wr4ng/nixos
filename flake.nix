@@ -10,18 +10,26 @@
 		};
 
 		hyprland.url = "github:hyprwm/Hyprland";
+		hyprpanel = {
+			url = "github:Jas-SinghFSU/HyprPanel";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 		hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
 
 		nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
 	};
 
-	outputs = { self, nixpkgs, ... } @ inputs: {
+	outputs = { self, nixpkgs, hyprpanel,... } @ inputs:
+	let
+		system = "x86_64-linux";
+	in
+	{
 
 		nixosModules = import ./modules/nixos;
 		homeManagerModules = import ./modules/home-manager;
 
 		nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
-			specialArgs = { inherit inputs; };
+			specialArgs = { inherit inputs; inherit system; };
 			system = "x86_64-linux";
 			modules = [
 				./hosts/desktop/configuration.nix
@@ -30,7 +38,7 @@
 		};
 
 		nixosConfigurations.yoga = nixpkgs.lib.nixosSystem {
-			specialArgs = { inherit inputs; };
+			specialArgs = { inherit inputs; inherit system; };
 			system = "x86_64-linux";
 			modules = [
 				./hosts/yoga/configuration.nix

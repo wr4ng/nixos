@@ -12,6 +12,7 @@ in
 		packages = with pkgs; [
 			vim
 			wget
+			killall
 			htop
 			tree
 			fzf
@@ -21,11 +22,15 @@ in
 			gcc
 			go
 			cargo
+			tealdeer
+			cbonsai
 		];
 	};
 
 	# Enable zsh for login shell
 	programs.zsh.enable = true;
+
+	programs.noisetorch.enable = true;
 
 	# Configure zsh using home-manager
 	home-manager.users.${username} = {
