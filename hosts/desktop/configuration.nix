@@ -33,6 +33,9 @@
 	# Define your hostname.
 	networking.hostName = "nixos-desktop"; 
 
+	# Use latest linux kernel
+	boot.kernelPackages = pkgs.linuxPackages_latest;
+
 	# Enable networking
 	networking.networkmanager.enable = true;
 
