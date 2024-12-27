@@ -221,12 +221,7 @@ label {
 		nerd-fonts.jetbrains-mono
 		fzf
 		ripgrep
-		(google-chrome.override {
-			commandLineArgs = [
-				"--ozone-platform-hint=auto"
-				"--disable-gpu"
-			];
-		})
+		google-chrome
 		libnotify
 	];
 
