@@ -183,13 +183,9 @@ label {
 	gtk = {
 		enable = true;
 		theme = {
-			name = "Adwaita-dark";
-			package = pkgs.gnome-themes-extra;
+			name = "WhiteSur-Dark";
+			package = pkgs.whitesur-gtk-theme;
 		};
-		#theme = {
-		#	name = "Dracula";
-		#	package = pkgs.dracula-theme;
-		#};
 		gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
 		gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
 	};
@@ -222,6 +218,7 @@ label {
 		google-chrome
 		libnotify
 		vscode
+		whitesur-gtk-theme
 	];
 
 	# Home Manager is pretty good at managing dotfiles. The primary way to manage
