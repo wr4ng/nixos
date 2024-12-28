@@ -16,6 +16,10 @@
 	grub.enable = true;
 	grub.useOSProber = false;
 
+	# Silent boot
+	boot.kernelParams = [ "quiet" ];
+	boot.consoleLogLevel = 0;
+
 	networking.hostName = "yoga"; # Define your hostname.
 	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
