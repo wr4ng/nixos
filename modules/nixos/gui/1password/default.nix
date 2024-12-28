@@ -1,25 +1,25 @@
 { config, lib, ... }:
 
 {
-	options.onePasswordGUI = {
+	options.programs.gui.onePassword = {
 		enable = lib.mkEnableOption "enables 1Password GUI application";
 		username = lib.mkOption {
 			type = lib.types.str;
-			description = "The username for 1Password polkit policy. Defaults to the system's default user.";
+			description = "Username used for 1Password polkit policy";
 		};
 	};
 
-	config = lib.mkIf config.onePasswordGUI.enable {
+	config = lib.mkIf config.programs.gui.onePassword.enable {
 		programs._1password.enable = true;
 		programs._1password-gui = {
 			enable = true;
-			polkitPolicyOwners = [ config.onePasswordGUI.username ];
+			polkitPolicyOwners = [ config.programs.gui.onePassword.username ];
 		};
 
 		# Add an assertion to ensure username is set
 		assertions = [
 			{
-				assertion = config.onePasswordGUI.username != null;
+				assertion = config.programs.gui.onePassword.username != null;
 				message = "You must specify a valid username for the 1Password GUI polkit policy.";
 			}
 		];

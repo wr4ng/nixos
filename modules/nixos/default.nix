@@ -7,6 +7,10 @@
 		./grub.nix
 		./nvidia-drivers.nix
 		./steam.nix
-		./1password.nix
+
+		# Import default gui programs
+		./gui
 	];
+
+	username = "wr4ng";
 }

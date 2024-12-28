@@ -17,8 +17,8 @@
 	# Steam
 	steam.enable = true;
 	# 1Password
-	onePasswordGUI.enable = true;
-	onePasswordGUI.username = "wr4ng";
+	# onePasswordGUI.enable = true;
+	# onePasswordGUI.username = "wr4ng";
 
 	# Setup home-manager
 	home-manager = {
