@@ -12,6 +12,7 @@ in
 		packages = with pkgs; [
 			vim
 			wget
+			ripgrep
 			killall
 			htop
 			tree
