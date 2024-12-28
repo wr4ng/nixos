@@ -6,7 +6,7 @@
 
 	# Enable and configure modules
 	hyprland.enable = true;
-	waybar.backlight.enable = false; # No backlight on desktop
+	waybar.backlight.enable = true; # Enable backlight waybar module
 	kitty.enable = true;
 	kitty.fontSize = 14;
 	webcord.enable = true;
