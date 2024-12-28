@@ -219,10 +219,9 @@ label {
 	# environment.
 	home.packages = with pkgs; [
 		nerd-fonts.jetbrains-mono
-		fzf
-		ripgrep
 		google-chrome
 		libnotify
+		vscode
 	];
 
 	# Home Manager is pretty good at managing dotfiles. The primary way to manage
