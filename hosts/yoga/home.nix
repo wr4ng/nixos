@@ -105,8 +105,6 @@
 	home.packages = with pkgs; [
 		nerd-fonts.jetbrains-mono
 		zsh-powerlevel10k
-		fzf
-		ripgrep
 		(google-chrome.override {
 			commandLineArgs = [
 				"--ozone-platform-hint=auto"

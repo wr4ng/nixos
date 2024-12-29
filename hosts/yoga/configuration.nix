@@ -119,7 +119,6 @@
 			wget
 			htop
 			tree
-			fzf
 			unzip
 			eza
 
