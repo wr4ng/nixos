@@ -22,6 +22,7 @@ in
 			eza
 			gcc
 			go
+			python3
 			cargo
 			tealdeer
 			cbonsai

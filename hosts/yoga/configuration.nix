@@ -32,6 +32,13 @@
 	# networking.proxy.default = "http://user:password@proxy:port/";
 	# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+	# Enable running non-nix executables (example: stylua installed by Mason in nvim)
+	programs.nix-ld.enable = true;
+	programs.nix-ld.libraries = with pkgs; [
+		# Add any missing dynamic libraries for unpackaged programs
+		# here, NOT in environment.systemPackages
+	];
+
 	# Enable networking
 	networking.networkmanager.enable = true;
 
