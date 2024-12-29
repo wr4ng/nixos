@@ -20,6 +20,12 @@
 	boot.kernelParams = [ "quiet" ];
 	boot.consoleLogLevel = 0;
 
+	# Power management
+	powerManagement.enable = true;
+	powerManagement.powertop.enable = true;
+	services.power-profiles-daemon.enable = false; # Disable gnome power management (conflicts with tlp)
+	services.tlp.enable = true;
+
 	networking.hostName = "yoga"; # Define your hostname.
 	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -27,6 +33,10 @@
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 	programs.zsh.enable = true;
+
+	environment.systemPackages = [
+		inputs.ghostty.packages.x86_64-linux.default
+	];
 
 	# Configure network proxy if necessary
 	# networking.proxy.default = "http://user:password@proxy:port/";
@@ -129,6 +139,8 @@
 
 			pavucontrol
 			pamixer
+
+			powertop
 		];
 	};
 
