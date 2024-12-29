@@ -41,8 +41,8 @@
 	gtk = {
 		enable = true;
 		theme = {
-			name = "Dracula";
-			package = pkgs.dracula-theme;
+			name = "WhiteSur-Dark";
+			package = pkgs.whitesur-gtk-theme;
 		};
 		gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
 		gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
@@ -56,8 +56,8 @@
 
 	qt = {
 		enable = true;
-		style.name = "adwaita-dar";
-		style.package = pkgs.adwaita-qt;
+		style.name = "adwaita-dark";
+		platformTheme.name = "adwaita";
 	};
 
 	programs.zsh = {
