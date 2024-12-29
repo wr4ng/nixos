@@ -10,5 +10,14 @@ return {
 	config = function()
 		vim.keymap.set("n", "<leader>n", "<Cmd>Neotree filesystem reveal left<CR>", { desc = "neotree: open" })
 		vim.keymap.set("n", "<leader>b", "<Cmd>Neotree toggle<CR>", { desc = "neotree: toggle" })
+
+		require("neo-tree").setup({
+			buffers = {
+				follow_current_file = {
+					enabled = true,
+					leave_dirs_open = false
+				}
+			}
+		})
 	end,
 }
