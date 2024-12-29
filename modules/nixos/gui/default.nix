@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 {
 	options.username = lib.mkOption {
 		type = lib.types.str;
@@ -10,7 +10,22 @@
 	];
 
 	config = {
+		# Default GUI applications
+		environment.systemPackages = with pkgs; [
+			obsidian
+			localsend
+		];
+		# Setup 1Password
 		programs.gui.onePassword.enable = true;
 		programs.gui.onePassword.username = config.username;
+
+		networking.firewall.allowedTCPPorts = [
+			# localsend
+			53317
+		];
+		networking.firewall.allowedUDPPorts = [
+			# localsend
+			53317
+		];
 	};
 }
