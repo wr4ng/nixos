@@ -16,35 +16,39 @@
 		};
 		hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
 
+		ghostty = {
+			url = "github:ghostty-org/ghostty";
+		};
+
 		nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
 	};
 
-	outputs = { self, nixpkgs, hyprpanel,... } @ inputs:
-	let
-		system = "x86_64-linux";
-	in
-	{
-
-		nixosModules = import ./modules/nixos;
-		homeManagerModules = import ./modules/home-manager;
-
-		nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
-			specialArgs = { inherit inputs; inherit system; };
+	outputs = { self, nixpkgs, ghostty, hyprpanel,... } @ inputs:
+		let
 			system = "x86_64-linux";
-			modules = [
-				./hosts/desktop/configuration.nix
-				inputs.home-manager.nixosModules.default
-			];
-		};
+		in
+			{
 
-		nixosConfigurations.yoga = nixpkgs.lib.nixosSystem {
-			specialArgs = { inherit inputs; inherit system; };
-			system = "x86_64-linux";
-			modules = [
-				./hosts/yoga/configuration.nix
-				./modules/nixos
-				inputs.home-manager.nixosModules.default
-			];
+			nixosModules = import ./modules/nixos;
+			homeManagerModules = import ./modules/home-manager;
+
+			nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
+				specialArgs = { inherit inputs; inherit system; };
+				system = "x86_64-linux";
+				modules = [
+					./hosts/desktop/configuration.nix
+					inputs.home-manager.nixosModules.default
+				];
+			};
+
+			nixosConfigurations.yoga = nixpkgs.lib.nixosSystem {
+				specialArgs = { inherit inputs; inherit system; };
+				system = "x86_64-linux";
+				modules = [
+					./hosts/yoga/configuration.nix
+					./modules/nixos
+					inputs.home-manager.nixosModules.default
+				];
+			};
 		};
-	};
 }

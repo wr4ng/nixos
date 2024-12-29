@@ -28,7 +28,6 @@
 		userEmail = "madscwn@gmail.com";
 	};
 
-
 	programs.gh.enable = true;
 
 	home.pointerCursor = lib.mkForce {
@@ -117,6 +116,7 @@
 	# plain files is through 'home.file'.
 	home.file = {
 		".p10k.zsh".text = builtins.readFile ./.p10k.zsh;
+		".config/ghostty/config".text = ''theme = catppuccin-macchiato'';
 	};
 
 	# Let Home Manager install and manage itself.
