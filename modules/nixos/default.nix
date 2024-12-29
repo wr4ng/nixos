@@ -7,6 +7,7 @@
 		./grub.nix
 		./nvidia-drivers.nix
 		./steam.nix
+		./gnome-keyring.nix
 
 		# Import default gui programs
 		./gui

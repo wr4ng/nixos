@@ -53,7 +53,6 @@
 	};
 
 	programs.gh.enable = true;
-	services.gnome-keyring.enable = true;
 
 	programs.hyprpanel = {
 		enable = true;
