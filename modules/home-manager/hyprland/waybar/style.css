@@ -46,6 +46,13 @@ window#waybar {
 	background: transparent;
 }
 
+#pulseaudio,
+#backlight,
+#network,
+#tray {
+	margin-right: 12px;
+}
+
 #battery.critical:not(.charging) {
 	animation-name: blink;
 	animation-duration: 0.25s;

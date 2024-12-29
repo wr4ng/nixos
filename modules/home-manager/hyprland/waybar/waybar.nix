@@ -33,17 +33,12 @@
 		],
 		"modules-right": [
 			"tray",
-			"custom/separator",
 			"network",
-			"custom/separator",
 			${if config.waybar.backlight.enable then ''
 			"backlight",
-			"custom/separator",
 			'' else ""}
 			"pulseaudio",
-			"custom/separator",
 			"pulseaudio#microphone",
-			"custom/separator",
 			"battery",
 			"clock",
 			"custom/power"
