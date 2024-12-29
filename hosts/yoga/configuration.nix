@@ -149,6 +149,8 @@
 	xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
 	security.polkit.enable = true;
+	#TODO: Move to hyprland module once it is a nix module instead of home-manager
+	security.pam.services.hyprlock = {}; # Allow hyprlock to unlock session
 
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions
