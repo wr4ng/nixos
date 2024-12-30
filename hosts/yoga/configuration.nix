@@ -39,7 +39,9 @@
 	services.tlp.enable = true;
 
 	networking.hostName = "yoga"; # Define your hostname.
-	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+	networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+	# Enable networking
+	networking.networkmanager.enable = true;
 
 	# Enable nix flakes
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -56,20 +58,6 @@
 	environment.systemPackages = [
 		inputs.ghostty.packages.x86_64-linux.default
 	];
-
-	# Configure network proxy if necessary
-	# networking.proxy.default = "http://user:password@proxy:port/";
-	# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-	# Enable running non-nix executables (example: stylua installed by Mason in nvim)
-	programs.nix-ld.enable = true;
-	programs.nix-ld.libraries = with pkgs; [
-		# Add any missing dynamic libraries for unpackaged programs
-		# here, NOT in environment.systemPackages
-	];
-
-	# Enable networking
-	networking.networkmanager.enable = true;
 
 	# Set your time zone.
 	time.timeZone = "Europe/Copenhagen";

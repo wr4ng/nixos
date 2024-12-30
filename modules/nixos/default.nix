@@ -1,3 +1,5 @@
+{ inputs, pkgs, config, lib, ... }:
+
 {
 	imports = [
 		# Setup main user
@@ -16,4 +18,11 @@
 	# Set username used by GUI programs
 	#TODO: Set using main-user.nix or similar
 	programs.gui.username = "wr4ng";
+
+	# Enable running non-nix binaries. See https://nix.dev/guides/faq.html#how-to-run-non-nix-executables
+	  programs.nix-ld.enable = true;
+	  programs.nix-ld.libraries = with pkgs; [
+		# Add any missing dynamic libraries for unpackaged programs
+		# here, NOT in environment.systemPackages
+	  ];
 }
