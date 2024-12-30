@@ -135,7 +135,7 @@
 			"scroll-step": 1
 		},
 		"network": {
-			"format-wifi": "{icon}",
+			"format-wifi": "{icon} {essid} ({signalStrength}%)",
 			"format-ethernet": "󰈀 {ipaddr}",
 			"format-disconnected": "󰤮 ",
 			"format-icons": ["󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
