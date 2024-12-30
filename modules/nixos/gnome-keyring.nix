@@ -10,5 +10,6 @@
 	security.pam.services.gdm.enableGnomeKeyring = true; # load gnome-keyring at startup
 	environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID"; # set the runtime directory
 	security.pam.services.login.enableGnomeKeyring = true;
+	security.pam.services.hyprlock.enableGnomeKeyring = true; # allow hyprlock to re-unlock keyring when logging in at lockscreen
 	programs.seahorse.enable = true; # enable the graphical frontend for managing
 }
