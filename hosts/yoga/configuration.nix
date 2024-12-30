@@ -34,6 +34,10 @@
 
 	programs.zsh.enable = true;
 
+	# Ollama + Alpaca setup
+	programs.ollama.enable = true;
+	programs.ollama.acceleration = "rocm";
+
 	environment.systemPackages = [
 		inputs.ghostty.packages.x86_64-linux.default
 	];

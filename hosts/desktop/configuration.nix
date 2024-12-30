@@ -14,11 +14,9 @@
 	grub.gfxmodeEfi = "2560x1440"; # Set main monitor size for grub menu
 	# GPU drivers
 	nvidia-drivers.enable = true;
+
 	# Steam
-	steam.enable = true;
-	# 1Password
-	# onePasswordGUI.enable = true;
-	# onePasswordGUI.username = "wr4ng";
+	programs.gui.steam.enable = true;
 
 	# Setup home-manager
 	home-manager = {

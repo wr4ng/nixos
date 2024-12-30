@@ -1,14 +1,9 @@
 { pkgs, lib, config, ... }:
 
 {
-	options = {
-		steam = {
-			enable = lib.mkEnableOption "enables steam";
-		};
+	options.programs.gui.steam.enable = lib.mkEnableOption "enables steam";
 
-	};
-
-	config = lib.mkIf config.steam.enable {
+	config = lib.mkIf config.programs.gui.steam.enable {
 		# Install Steam.
 		programs.steam.enable = true;
 		programs.steam.gamescopeSession.enable = true;
@@ -21,6 +16,7 @@
 
 		# Setup protonGE path.
 		environment.sessionVariables = {
+			#TODO: Interpolate path using user
 			STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/wr4ng/.steam/root/compatibilitytools.d";
 		};
 	};
