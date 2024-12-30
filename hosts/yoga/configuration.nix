@@ -19,6 +19,19 @@
 	boot.kernelParams = [ "quiet" ];
 	boot.consoleLogLevel = 0;
 
+	# AMD driver setup
+	boot.initrd.kernelModules = [ "amdgpu" ];	# Let kernel load amdgpu early
+	hardware.graphics = { 						# Setup OpenGL
+		enable = true;
+		enable32Bit = true; 					# If you need 32-bit support for Steam or Wine.
+		extraPackages = with pkgs; [			# Vulkan packages
+			vulkan-loader
+			vulkan-validation-layers
+			vulkan-extension-layer
+		];
+	};
+	services.xserver.videoDrivers = [ "amdgpu" ]; 	# Ensure X11 used amdgpu, i.e. if I want to open Gnome X11 for compatibility
+
 	# Power management
 	powerManagement.enable = true;
 	powerManagement.powertop.enable = true;
