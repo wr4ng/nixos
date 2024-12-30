@@ -33,9 +33,7 @@
 
 	services.mako = {
 		enable = true;
-		#catppuccin.enable = true;
 		actions = true;
-		#anchor = if hostname == "kara" then "top-center" else "top-right";
 		borderRadius = 8;
 		borderSize = 1;
 		defaultTimeout = 10000;
