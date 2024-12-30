@@ -31,7 +31,7 @@
 	};
 
 	# Define your hostname.
-	networking.hostName = "nixos-desktop"; 
+	networking.hostName = "desktop";
 
 	# Use latest linux kernel
 	boot.kernelPackages = pkgs.linuxPackages_latest;
