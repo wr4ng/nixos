@@ -14,6 +14,20 @@ Rebuild laptop:
 sudo nixos-rebuild switch --flake ~/nixos#yoga
 ```
 
+Then on subsequent rebuilds it defaults to config matching hostname.
+Can therefore use:
+```shell
+sudo nixos-rebuild switch --flake ~/nixos
+```
+on both systems.
+
+## Running `Appimage` files
+
+```shell
+nix-shell -p appimage-run         # Enter nix shell with ability to run .AppImage files
+appimage-run <something.AppImage> # Run AppImage
+```
+
 # TODO
 - [ ] See hardware config for laptop: https://github.com/NixOS/nixos-hardware
 - [ ] Cleanup `desktop`'s `configuration.nix` and `home.nix`
