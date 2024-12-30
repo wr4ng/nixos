@@ -7,6 +7,7 @@
 		./grub.nix
 		./nvidia-drivers.nix
 		./gnome-keyring.nix
+		./hyprland
 
 		# Import default gui programs
 		./gui

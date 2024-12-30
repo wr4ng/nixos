@@ -11,7 +11,6 @@
 		inputs.home-manager.nixosModules.default
 	];
 
-
 	# Bootloader.
 	grub.enable = true;
 	grub.useOSProber = false;
@@ -31,6 +30,9 @@
 
 	# Enable nix flakes
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+	# Enable hyprland module
+	modules.hyprland.enable = true;
 
 	programs.zsh.enable = true;
 
@@ -81,12 +83,6 @@
 	services.xserver.displayManager.gdm.enable = true;
 	services.xserver.desktopManager.gnome.enable = true;
 
-	# Enable hyprland.
-	programs.hyprland = {
-		enable = true;
-		xwayland.enable = true;
-	};
-
 	# Configure keymap in X11
 	services.xserver.xkb = {
 		layout = "dk";
@@ -136,13 +132,9 @@
 			unzip
 			eza
 
-			networkmanagerapplet
 			gcc
 			go
 			cargo
-
-			pavucontrol
-			pamixer
 
 			powertop
 		];
@@ -164,8 +156,6 @@
 	xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
 	security.polkit.enable = true;
-	#TODO: Move to hyprland module once it is a nix module instead of home-manager
-	security.pam.services.hyprlock = {}; # Allow hyprlock to unlock session
 
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions

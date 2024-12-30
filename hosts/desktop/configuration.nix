@@ -15,6 +15,10 @@
 	# GPU drivers
 	nvidia-drivers.enable = true;
 
+	# Enable hyprland module
+	modules.hyprland.enable = true;
+	modules.hyprland.waybar.backlight.enable = false; # disable backlight waybar module
+
 	# Steam
 	programs.gui.steam.enable = true;
 
@@ -89,12 +93,6 @@
 	services.xserver.displayManager.gdm.enable = true;
 	services.xserver.desktopManager.gnome.enable = true;
 
-	# Enable hyprland.
-	programs.hyprland = {
-		enable = true;
-		xwayland.enable = true;
-	};
-
 	# XDG portal setup.
 	xdg.portal.enable = true;
 	xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -126,7 +124,6 @@
 
 	# Polkit setup.
 	security.polkit.enable = true;
-	security.pam.services.hyprlock = {}; # Allow hyprlock to unlock session
 
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions

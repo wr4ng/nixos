@@ -14,6 +14,10 @@
 			url = "github:Jas-SinghFSU/HyprPanel";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		hyprland-plugins = {
+			url = "github:hyprwm/hyprland-plugins";
+			inputs.hyprland.follows = "hyprland";
+		};
 		hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
 
 		ghostty = {
