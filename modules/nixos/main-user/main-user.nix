@@ -27,6 +27,7 @@ in
 			tealdeer
 			cbonsai
 			fastfetch
+			powertop
 		];
 	};
 

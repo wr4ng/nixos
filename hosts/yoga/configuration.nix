@@ -117,29 +117,6 @@
 	# Enable bluetooth
 	hardware.bluetooth.enable = true;
 
-	# Define a user account. Don't forget to set a password with ‘passwd’.
-	users.users.wr4ng = {
-		isNormalUser = true;
-		description = "Mads Christian Wrang Nielsen";
-		extraGroups = [ "networkmanager" "wheel" ];
-		packages = with pkgs; [
-			vim
-			git
-
-			wget
-			htop
-			tree
-			unzip
-			eza
-
-			gcc
-			go
-			cargo
-
-			powertop
-		];
-	};
-
 	home-manager = {
 		extraSpecialArgs = { inherit inputs; };
 		users = {

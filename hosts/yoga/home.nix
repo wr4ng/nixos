@@ -102,18 +102,11 @@
 	home.packages = with pkgs; [
 		nerd-fonts.jetbrains-mono
 		zsh-powerlevel10k
-		(google-chrome.override {
-			commandLineArgs = [
-				"--ozone-platform-hint=auto"
-				"--disable-gpu"
-			];
-		})
 	];
 
 	# Home Manager is pretty good at managing dotfiles. The primary way to manage
 	# plain files is through 'home.file'.
 	home.file = {
-		".p10k.zsh".text = builtins.readFile ./.p10k.zsh;
 		".config/ghostty/config".text = ''theme = catppuccin-macchiato'';
 	};
 

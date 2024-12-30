@@ -18,6 +18,11 @@
 			localsend
 			qdirstat
 			vscode
+			(google-chrome.override {
+				commandLineArgs = [
+					"--ozone-platform-hint=auto" # To allow to run natively on wayland
+				];
+			})
 		];
 		# Setup 1Password
 		programs.gui.onePassword.enable = true;

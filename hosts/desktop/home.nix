@@ -127,9 +127,7 @@
 	# environment.
 	home.packages = with pkgs; [
 		nerd-fonts.jetbrains-mono
-		google-chrome
 		libnotify
-		vscode
 		whitesur-gtk-theme
 	];
 
