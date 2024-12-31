@@ -18,6 +18,9 @@
 	nixpkgs.config.allowUnfree = true;
 
 	programs.zoxide.enable = true;
+	programs.zoxide.enableZshIntegration = true;
+	programs.zoxide.options = [ "--cmd cd" ];
+
 	programs.lazygit.enable = true;
 
 	programs.git = {
