@@ -5,14 +5,14 @@
 	min-height: 0;
 	color: #bd93f9;
 	min-height: 0;
-	background-color: rgba(30, 30, 47, 0.8);
+	background-color: rgba(20, 20, 20, 1);
 }
 
 #tooltip {
-	background-color: rgba(30, 30, 47, 0.8);
+	background-color: rgba(20, 20, 20, 1);
 }
 
-window#waybar {
+window#waybar * {
 	border-radius: 12px;
 }
 
