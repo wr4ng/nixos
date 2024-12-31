@@ -6,14 +6,11 @@
 	color: #bd93f9;
 	min-height: 0;
 	background-color: rgba(20, 20, 20, 1);
+	border-radius: 12px;
 }
 
 #tooltip {
 	background-color: rgba(20, 20, 20, 1);
-}
-
-window#waybar * {
-	border-radius: 12px;
 }
 
 #workspaces {
