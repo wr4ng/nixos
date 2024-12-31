@@ -51,6 +51,8 @@
 
 	programs.zsh.enable = true;
 
+	programs.gnupg.agent.enable = true;
+
 	# Ollama + Alpaca setup
 	programs.ollama.enable = true;
 	programs.ollama.acceleration = "rocm";
