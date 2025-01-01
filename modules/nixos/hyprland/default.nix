@@ -26,8 +26,7 @@
 		security.pam.services.hyprlock = {}; 
 
 		# Home-manager module
-		#TODO: Get "wr4ng" from somewhere
-		home-manager.users.wr4ng = {pkgs, ...}: {
+		home-manager.users.${config.users.defaultUser} = {pkgs, ...}: {
 			# Import hyprland home-manager module
 			imports = [
 				inputs.hyprland.homeManagerModules.default
@@ -39,10 +38,15 @@
 			home.packages = with pkgs; [
 				#TODO: Should system be provided as input? "${system}" (config.hyprland.system or similar?)
 				inputs.hyprland-qtutils.packages."x86_64-linux".default
-				hyprpolkitagent 		# Polkit agent
-				wl-clipboard 			# Clipboard support
-				swww 					# Background/Wallpaper
-				networkmanagerapplet 	# Network tray app TODO: Load at startup? exec-once in hyprland.conf
+				# Polkit agent
+				hyprpolkitagent
+				# Clipboard support
+				wl-clipboard
+				cliphist
+				# Background/Wallpaper
+				swww
+				# Network tray app
+				networkmanagerapplet
 				# Audio control
 				pavucontrol
 				pamixer
@@ -50,6 +54,8 @@
 				grim
 				slurp
 				swappy
+				# Color picker
+				hyprpicker
 			];
 
 			# Use hyprland home-manager module to set hyprbars plugin (linked to nix-store)

@@ -13,14 +13,13 @@
 	config = lib.mkIf config.waybar.enable {
 		home.packages = with pkgs; [
 			waybar
-		] ++ (if config.waybar.backlight.enable then [ brightnessctl ] else []); # Add brightnessctl to control backlight TODO: Should probably set somewhere else
+		] ++ (if config.waybar.backlight.enable then [ brightnessctl ] else []); # Add brightnessctl to control backlight TODO: Should probably set somewhere else. Maybe a modules.laptop.enable option?
 
 		home.file.".config/waybar/style.css".source = ./style.css;
 		home.file.".config/waybar/config.jsonc".text = ''
 	{
 		"layer": "top",
 		"height": 42,
-		"margin": "12, 12, 0, 12",
 		"position": "top",
 		"exclusive": true,
 		"passthrough": false,

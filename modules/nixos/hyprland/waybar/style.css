@@ -4,13 +4,11 @@
 	font-size: 14px;
 	min-height: 0;
 	color: #bd93f9;
-	min-height: 0;
-	background-color: rgba(20, 20, 20, 1);
-	border-radius: 12px;
+	background-color: #090909;
 }
 
 #tooltip {
-	background-color: rgba(20, 20, 20, 1);
+	background-color: #090909;
 }
 
 #workspaces {
@@ -69,7 +67,7 @@
 }
 
 #custom-power {
-	font-size: 20px;
+	font-size: 18px;
 	margin-right: 22px;
 	background: transparent;
 }
