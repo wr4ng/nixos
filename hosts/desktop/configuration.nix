@@ -41,9 +41,8 @@
 	# Enable networking
 	networking.networkmanager.enable = true;
 
-	# Enable bluetooth
-	hardware.bluetooth.enable = true;
-	services.blueman.enable = true;
+	# Enable my bluetooth module
+	modules.bluetooth.enable = true;
 
 	# Setup logitech
 	hardware.logitech.wireless.enable = true;
@@ -54,6 +53,7 @@
 	services.ratbagd.enable = true;
 
 	environment.systemPackages = with pkgs; [
+		#TODO: Move to modules?
 		solaar
 		piper
 		spotify
@@ -103,7 +103,6 @@
 	# Enable sound with pipewire.
 	hardware.pulseaudio = {
 		enable = false;
-		package = pkgs.pulseaudioFull; # Add extra bluetooth codecs
 	};
 	security.rtkit.enable = true;
 	services.pipewire = {
@@ -117,7 +116,6 @@
 		# no need to redefine it in your config for now)
 		#media-session.enable = true;
 	};
-	hardware.bluetooth.settings.General.Experimental = true; # To see battery of bluetooth devices
 
 	# Allow unfree packages
 	nixpkgs.config.allowUnfree = true;

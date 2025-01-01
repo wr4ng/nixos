@@ -43,6 +43,9 @@
 	# Enable networking
 	networking.networkmanager.enable = true;
 
+	# Enable my bluetooth module
+	modules.bluetooth.enable = true;
+
 	# Enable nix flakes
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

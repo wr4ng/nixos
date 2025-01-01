@@ -6,6 +6,7 @@
 		./main-user
 
 		# Import nixos modules
+		./bluetooth
 		./grub.nix
 		./nvidia-drivers.nix
 		./gnome-keyring.nix
