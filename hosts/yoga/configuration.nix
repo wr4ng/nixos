@@ -46,10 +46,11 @@
 	# Enable nix flakes
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-	# Enable hyprland module
+	# Enable my hyprland module
 	modules.hyprland.enable = true;
 
-	programs.zsh.enable = true;
+	# Enable my steam module
+	programs.gui.steam.enable = true;
 
 	programs.gnupg.agent.enable = true;
 
@@ -57,9 +58,14 @@
 	programs.ollama.enable = true;
 	programs.ollama.acceleration = "rocm";
 
-	environment.systemPackages = [
-		inputs.ghostty.packages.x86_64-linux.default
+	environment.systemPackages = with pkgs; [
+		adwaita-qt
 	];
+
+	# QT
+	environment.sessionVariables = {
+		QT_STYLE_OVERRIDE = "adwaita-dark";
+	};
 
 	# Set your time zone.
 	time.timeZone = "Europe/Copenhagen";
@@ -136,6 +142,8 @@
 	xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
 	security.polkit.enable = true;
+
+	#environment.variables.QT_QPA_PLATFORMTHEME = "qt5ct";
 
 	# This value determines the NixOS release from which the default
 	# settings for stateful data, like file locations and database versions

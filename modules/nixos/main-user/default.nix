@@ -1,9 +1,13 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
-	username = "wr4ng";
+	username = config.users.defaultUser;
 in
 {
+	imports = [
+		./docker
+	];
+
 	users.users.${username} = {
 		isNormalUser = true;
 		description = "Mads Christian Wrang Nielsen";
@@ -34,15 +38,12 @@ in
 	# Enable zsh for login shell
 	programs.zsh.enable = true;
 
-	programs.noisetorch.enable = true;
+	programs.noisetorch.enable = true; #TODO: Move to webcord module
 
-	# Configure zsh using home-manager
 	home-manager.users.${username} = {
-		# Install powerlevel10k
-		home.packages = with pkgs; [
-			zsh-powerlevel10k
+		imports = [
+			./git
 		];
-
 		# Setup zsh
 		programs.zsh = {
 			enable = true;
@@ -75,9 +76,12 @@ in
 				source ~/.p10k.zsh
 			'';
 		};
-		# Symlink powerlevel10k config
-		home.file = {
-			".p10k.zsh".text = builtins.readFile ./.p10k.zsh;
-		};
+		# Setup zoxide as cd replacement
+		programs.zoxide.enable = true;
+		programs.zoxide.enableZshIntegration = true;
+		programs.zoxide.options = [ "--cmd cd" ];
+		# Install powerlevel10k
+		home.packages = [ pkgs.zsh-powerlevel10k ];
+		home.file.".p10k.zsh".text = builtins.readFile ./p10k.zsh; # Symlink powerlevel10k config
 	};
 }

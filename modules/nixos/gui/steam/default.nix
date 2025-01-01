@@ -16,8 +16,7 @@
 
 		# Setup protonGE path.
 		environment.sessionVariables = {
-			#TODO: Interpolate path using user
-			STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/wr4ng/.steam/root/compatibilitytools.d";
+			STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/${config.users.defaultUser}/.steam/root/compatibilitytools.d";
 		};
 	};
 }

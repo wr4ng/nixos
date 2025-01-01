@@ -1,11 +1,11 @@
-{ inputs, pkgs, config, lib, ... }:
+{ lib, ... }:
 
 {
 	imports = [
 		# Setup main user
-		./main-user/main-user.nix
+		./main-user
 
-		# Import modules (not enabled by default)
+		# Import nixos modules
 		./grub.nix
 		./nvidia-drivers.nix
 		./gnome-keyring.nix
@@ -15,14 +15,20 @@
 		./gui
 	];
 
-	# Set username used by GUI programs
-	#TODO: Set using main-user.nix or similar
-	programs.gui.username = "wr4ng";
+	options = {
+		users.defaultUser = lib.mkOption {
+			type = lib.types.str;
+			default = "wr4ng"; #TODO: Maybe set somewhere else instead of using default value?
+		};
+	};
 
-	# Enable running non-nix binaries. See https://nix.dev/guides/faq.html#how-to-run-non-nix-executables
-	  programs.nix-ld.enable = true;
-	  programs.nix-ld.libraries = with pkgs; [
-		# Add any missing dynamic libraries for unpackaged programs
-		# here, NOT in environment.systemPackages
-	  ];
+	config = {
+		#TODO: Move this to some module
+		# Enable running non-nix binaries. See https://nix.dev/guides/faq.html#how-to-run-non-nix-executables
+		programs.nix-ld.enable = true;
+		programs.nix-ld.libraries = [
+			# Add any missing dynamic libraries for unpackaged programs
+			# here, NOT in environment.systemPackages
+		];
+	};
 }

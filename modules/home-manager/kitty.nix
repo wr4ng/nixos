@@ -14,6 +14,7 @@
 	};
 
 	config = lib.mkIf config.kitty.enable {
+		home.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 		programs.kitty = {
 			enable = true;
 			font = {
@@ -32,12 +33,10 @@
 				input_delay = 2;
 				sync_to_monitor = true;
 
-
 				remember_window_size = true;
 				draw_minimal_borders = true;
 				window_margin_width = 4;
 				hide_window_decorations = false;
-
 
 				tab_bar_edge = "bottom";
 				tab_bar_style = "powerline";
