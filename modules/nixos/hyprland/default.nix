@@ -56,6 +56,9 @@
 				swappy
 				# Color picker
 				hyprpicker
+				# Notifications
+				libnotify
+				mako
 			];
 
 			# Use hyprland home-manager module to set hyprbars plugin (linked to nix-store)
@@ -108,6 +111,26 @@
 
 			home.sessionVariables = {
 				NIXOS_OZONE_WL = "1"; # Hint to election apps to use wayland
+			};
+
+			# Enable mako for notifications
+			services.mako = {
+				enable = true;
+				actions = true;
+				borderRadius = 8;
+				borderSize = 1;
+				defaultTimeout = 10000;
+				icons = true;
+				layer = "overlay";
+				maxVisible = 3;
+				padding = "10";
+				width = 300;
+				font = "monospace 12";
+				# Theming (https://github.com/catppuccin/mako/blob/main/themes/catppuccin-macchiato/catppuccin-macchiato-lavender)
+				backgroundColor = "#24273a";
+				textColor = "#cad3f5";
+				borderColor = "#b7bdf8";
+				progressColor = "over #363a4f";
 			};
 
 			#TODO: Move to submodule
