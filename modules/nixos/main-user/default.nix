@@ -40,6 +40,10 @@ in
 
 	programs.noisetorch.enable = true; #TODO: Move to webcord module
 
+	# Enable direnv (with "use nix" support)
+	programs.direnv.enable = true;
+	programs.direnv.enableZshIntegration = true;
+
 	home-manager.users.${username} = {
 		imports = [
 			./git
@@ -66,6 +70,7 @@ in
 					"gh"
 					"sudo"
 					"command-not-found"
+					"direnv"
 				];
 			};
 			initExtra = ''
