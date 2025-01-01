@@ -26,30 +26,6 @@
 		settings.experimental-features = [ "nix-command" "flakes" ];
 	};
 
-	programs.zoxide.enable = true;
-	programs.lazygit.enable = true;
-
-	services.mako = {
-		enable = true;
-		actions = true;
-		borderRadius = 8;
-		borderSize = 1;
-		defaultTimeout = 10000;
-		icons = true;
-		layer = "overlay";
-		maxVisible = 3;
-		padding = "10";
-		width = 300;
-	};
-
-	programs.git = {
-		enable = true;
-		userName = "Mads Christian Wrang Nielsen";
-		userEmail = "madscwn@gmail.com";
-	};
-
-	programs.gh.enable = true;
-
 	programs.hyprpanel = {
 		enable = true;
 		systemd.enable = true;
@@ -123,19 +99,9 @@
 	# release notes.
 	home.stateVersion = "24.11"; # Please read the comment before changing.
 
-	# The home.packages option allows you to install Nix packages into your
-	# environment.
 	home.packages = with pkgs; [
-		nerd-fonts.jetbrains-mono
-		libnotify
 		whitesur-gtk-theme
 	];
-
-	# Home Manager is pretty good at managing dotfiles. The primary way to manage
-	# plain files is through 'home.file'.
-	home.file = {
-	};
-
 
 	# Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;
