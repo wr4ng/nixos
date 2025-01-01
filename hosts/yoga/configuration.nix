@@ -52,6 +52,12 @@
 	# Enable my steam module
 	programs.gui.steam.enable = true;
 
+	# Enable my Android-Studio module
+	modules.android-studio.enable = true;
+
+	# Enable my virt-manager module
+	modules.virt-manager.enable = true;
+
 	programs.gnupg.agent.enable = true;
 
 	# Ollama + Alpaca setup

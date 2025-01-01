@@ -13,6 +13,9 @@
 
 		# Import default gui programs
 		./gui
+
+		./dev/android-studio
+		./dev/virt-manager
 	];
 
 	options = {
