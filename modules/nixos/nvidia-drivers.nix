@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 {
 	options.nvidia-drivers.enable = lib.mkEnableOption "enables nvidia drivers";
 
@@ -6,7 +6,9 @@
 		# Enable OpenGL
 		hardware.graphics = {
 			enable = true;
+			enable32Bit = true;
 		};
+		environment.systemPackages = with pkgs; [ clinfo ]; # Used to verify OpenGL setup
 
 		# Load nvidia driver for Xorg and Wayland
 		services.xserver.videoDrivers = ["nvidia"];
@@ -32,7 +34,7 @@
 			# https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
 			# Only available from driver 515.43.04+
 			# Currently alpha-quality/buggy, so false is currently the recommended setting.
-			open = false;
+			open = true;
 
 			# Enable the Nvidia settings menu,
 			# accessible via `nvidia-settings`.
@@ -41,5 +43,10 @@
 			# Optionally, you may need to select the appropriate driver version for your specific GPU.
 			# package = config.boot.kernelPackages.nvidiaPackages.stable;
 		};
+
+		# Load nvidia driver early
+		boot.initrd.kernelModules = [ "nvidia" ];
+		# Blacklist opensource driver
+		boot.blacklistedKernelModules = ["nouveau"];
 	};
 }
