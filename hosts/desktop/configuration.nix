@@ -19,8 +19,9 @@
 	modules.hyprland.enable = true;
 	modules.hyprland.waybar.backlight.enable = false; # disable backlight waybar module
 
-	# Steam
+	# Gaming
 	programs.gui.steam.enable = true;
+	programs.gui.lutris.enable = true;
 
 	# Setup home-manager
 	home-manager = {
@@ -57,6 +58,7 @@
 		solaar
 		piper
 		pyprland
+		unityhub
 	];
 
 	# Set your time zone.
