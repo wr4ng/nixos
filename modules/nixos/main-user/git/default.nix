@@ -6,6 +6,9 @@
 		enable = true;
 		userName = "Mads Christian Wrang Nielsen";
 		userEmail = "madscwn@gmail.com";
+		extraConfig = {
+			init.defaultBranch = "main";
+		};
 	};
 	programs.lazygit.enable = true;
 	programs.gh.enable = true;
