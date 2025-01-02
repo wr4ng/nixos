@@ -13,6 +13,7 @@
 			obsidian
 			localsend
 			qdirstat
+			spotify
 			vscode
 			(google-chrome.override {
 				commandLineArgs = [

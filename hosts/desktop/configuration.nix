@@ -56,7 +56,6 @@
 		#TODO: Move to modules?
 		solaar
 		piper
-		spotify
 		pyprland
 	];
 
