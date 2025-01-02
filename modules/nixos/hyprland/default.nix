@@ -59,6 +59,8 @@
 				# Notifications
 				libnotify
 				mako
+				# Audio control
+				playerctl
 			];
 
 			# Use hyprland home-manager module to set hyprbars plugin (linked to nix-store)
