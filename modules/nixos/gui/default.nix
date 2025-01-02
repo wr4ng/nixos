@@ -4,13 +4,16 @@
 	imports = [
 		./1password
 		./ollama
+		# Gaming
 		./steam
+		./lutris
 	];
 
 	config = {
 		# Default GUI applications
 		environment.systemPackages = with pkgs; [
 			obsidian
+			discord
 			localsend
 			qdirstat
 			spotify
