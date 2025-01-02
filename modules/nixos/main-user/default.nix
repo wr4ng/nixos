@@ -24,6 +24,7 @@ in
 			git
 			unzip
 			eza
+			yazi
 			gcc
 			go
 			python3
