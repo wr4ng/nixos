@@ -12,6 +12,7 @@
 			lua5_1
 			luarocks
 			python3Packages.pip
+			rust-analyzer
 		];
 
 		home.sessionVariables = {
