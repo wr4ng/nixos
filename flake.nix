@@ -20,14 +20,10 @@
 		};
 		hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
 
-		ghostty = {
-			url = "github:ghostty-org/ghostty";
-		};
-
 		nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
 	};
 
-	outputs = { self, nixpkgs, ghostty, hyprpanel,... } @ inputs:
+	outputs = { self, nixpkgs, hyprpanel,... } @ inputs:
 		let
 			system = "x86_64-linux";
 		in

@@ -50,8 +50,8 @@
 	home.stateVersion = "24.11"; # Please read the comment before changing.
 
 	# Ghostty
-	home.packages = [ inputs.ghostty.packages.x86_64-linux.default ];
-	home.file.".config/ghostty/config".text = ''theme = catppuccin-macchiato'';
+	# home.packages = [ inputs.ghostty.packages.x86_64-linux.default ];
+	# home.file.".config/ghostty/config".text = ''theme = catppuccin-macchiato'';
 
 	# Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;

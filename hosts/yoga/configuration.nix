@@ -69,7 +69,19 @@
 
 	environment.systemPackages = with pkgs; [
 		adwaita-qt
+		bottles
+		freecad-wayland
+		openjdk
+		maven
+		unityhub
+		dotnet-sdk
+		nil
+		cargo
+		rustc
+		gnome-tweaks
 	];
+
+	networking.firewall.enable = false;
 
 	# QT
 	environment.sessionVariables = {
