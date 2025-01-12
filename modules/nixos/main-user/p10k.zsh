@@ -28,6 +28,13 @@
 [[ ! -o 'no_brace_expand' ]] || p10k_config_opts+=('no_brace_expand')
 'builtin' 'setopt' 'no_aliases' 'no_sh_glob' 'brace_expand'
 
+# Show info when inside nix-shell
+function prompt_nix_shell() {
+  if [[ -v IN_NIX_SHELL ]]; then
+	  p10k segment -t "(nix-shell)"
+  fi
+}
+
 () {
   emulate -L zsh -o extended_glob
 
@@ -48,6 +55,7 @@
 
   # Left prompt segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+	nix_shell
     # context                 # user@host
     dir                       # current directory
     vcs                       # git status
@@ -61,7 +69,7 @@
     command_execution_time    # previous command duration
     virtualenv                # python virtual environment
     context                   # user@host
-    # time                    # current time
+    time                      # current time
   )
 
   # Basic style options that define the overall prompt look.
