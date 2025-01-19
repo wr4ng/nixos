@@ -79,6 +79,8 @@
 		cargo
 		rustc
 		gnome-tweaks
+		handbrake
+		ffmpeg
 	];
 
 	networking.firewall.enable = false;
