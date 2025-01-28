@@ -23,6 +23,9 @@
 	programs.gui.steam.enable = true;
 	programs.gui.lutris.enable = true;
 
+	# Enable my Android-Studio module
+	modules.android-studio.enable = true;
+
 	# Setup home-manager
 	home-manager = {
 		extraSpecialArgs = { inherit inputs; };
@@ -49,6 +52,13 @@
 	hardware.logitech.wireless.enable = true;
 	hardware.logitech.wireless.enableGraphical = true;
 
+	# Ollama + Alpaca setup
+	services.ollama = {
+		enable = true;
+		acceleration = "cuda";
+	};
+	services.open-webui.enable = true;
+
 	services.libinput.mouse.accelProfile = "flat";
 
 	services.ratbagd.enable = true;
@@ -59,6 +69,8 @@
 		piper
 		pyprland
 		unityhub
+		godot_4
+		freecad-wayland
 	];
 
 	# Set your time zone.
