@@ -65,7 +65,6 @@
 
 	# Ollama + Alpaca setup
 	programs.ollama.enable = true;
-	programs.ollama.acceleration = "rocm";
 
 	environment.systemPackages = with pkgs; [
 		adwaita-qt
