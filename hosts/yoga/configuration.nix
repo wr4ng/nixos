@@ -81,6 +81,9 @@
 		gnome-tweaks
 		handbrake
 		ffmpeg
+		godot_4
+		freecad
+		orca-slicer
 	];
 
 	networking.firewall.enable = false;
