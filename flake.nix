@@ -10,10 +10,6 @@
 		};
 
 		hyprland.url = "github:hyprwm/Hyprland";
-		hyprpanel = {
-			url = "github:Jas-SinghFSU/HyprPanel";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
 		hyprland-plugins = {
 			url = "github:hyprwm/hyprland-plugins";
 			inputs.hyprland.follows = "hyprland";
@@ -23,7 +19,7 @@
 		nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
 	};
 
-	outputs = { self, nixpkgs, hyprpanel,... } @ inputs:
+	outputs = { self, nixpkgs, ... } @ inputs:
 		let
 			system = "x86_64-linux";
 		in
