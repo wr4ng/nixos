@@ -164,7 +164,11 @@
 	nixpkgs.config.allowUnfree = true;
 
 	xdg.portal.enable = true;
-	xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+	xdg.portal.extraPortals = [
+		pkgs.xdg-desktop-portal-gtk
+		pkgs.xdg-desktop-portal-gnome
+		pkgs.xdg-desktop-portal-hyprland
+	];
 
 	security.polkit.enable = true;
 

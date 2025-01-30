@@ -26,9 +26,13 @@
 
 	gtk = {
 		enable = true;
+		#theme = {
+		#	name = "WhiteSur-Dark";
+		#	package = pkgs.whitesur-gtk-theme;
+		#};
 		theme = {
-			name = "WhiteSur-Dark";
-			package = pkgs.whitesur-gtk-theme;
+			name = "Adwaita-dark";
+			package = pkgs.gnome-themes-extra;
 		};
 		gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
 		gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
@@ -38,6 +42,12 @@
 		"org/gnome/desktop/interface" = {
 			color-scheme = "prefer-dark";
 		};
+	};
+
+	qt = {
+		enable = true;
+		style.name = "adwaita-dark";
+		platformTheme.name = "adwaita";
 	};
 
 	# This value determines the Home Manager release that your configuration is
