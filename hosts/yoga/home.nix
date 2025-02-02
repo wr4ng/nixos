@@ -26,13 +26,9 @@
 
 	gtk = {
 		enable = true;
-		#theme = {
-		#	name = "WhiteSur-Dark";
-		#	package = pkgs.whitesur-gtk-theme;
-		#};
 		theme = {
-			name = "Adwaita-dark";
-			package = pkgs.gnome-themes-extra;
+			name = "WhiteSur-Dark";
+			package = pkgs.whitesur-gtk-theme;
 		};
 		gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
 		gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
@@ -50,6 +46,11 @@
 		platformTheme.name = "adwaita";
 	};
 
+	home.packages = with pkgs; [
+		whitesur-gtk-theme
+		kdePackages.qt6ct
+	];
+
 	# This value determines the Home Manager release that your configuration is
 	# compatible with. This helps avoid breakage when a new Home Manager release
 	# introduces backwards incompatible changes.
@@ -58,10 +59,6 @@
 	# want to update the value, then make sure to first check the Home Manager
 	# release notes.
 	home.stateVersion = "24.11"; # Please read the comment before changing.
-
-	# Ghostty
-	# home.packages = [ inputs.ghostty.packages.x86_64-linux.default ];
-	# home.file.".config/ghostty/config".text = ''theme = catppuccin-macchiato'';
 
 	# Let Home Manager install and manage itself.
 	programs.home-manager.enable = true;

@@ -83,14 +83,17 @@
 		godot_4
 		freecad
 		orca-slicer
+		jq
+		nwg-look
+		xfce.thunar
 	];
 
 	networking.firewall.enable = false;
 
 	# QT
-	environment.sessionVariables = {
-		QT_STYLE_OVERRIDE = "adwaita-dark";
-	};
+	#environment.sessionVariables = {
+	#	QT_STYLE_OVERRIDE = "adwaita-dark";
+	#};
 
 	# Set your time zone.
 	time.timeZone = "Europe/Copenhagen";
@@ -166,6 +169,7 @@
 	xdg.portal.enable = true;
 	xdg.portal.extraPortals = [
 		pkgs.xdg-desktop-portal-gtk
+		pkgs.xdg-desktop-portal-wlr
 		pkgs.xdg-desktop-portal-gnome
 		pkgs.xdg-desktop-portal-hyprland
 	];
