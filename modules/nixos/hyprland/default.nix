@@ -196,7 +196,7 @@
 				# DATE
 				label {
 					monitor =
-					text = cmd[update:1000] echo $(date +"%Y-%M-%d")
+					text = cmd[update:1000] echo $(date +"%Y-%m-%d")
 					color = rgba(255, 255, 255, 0.8)
 					font_size = 20
 					font_family = "Hack Nerd Font Mono"
