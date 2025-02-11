@@ -1,4 +1,4 @@
-{ inputs, pkgs, lib, config, ... }:
+{ inputs, lib, config, ... }:
 
 {
 	imports = [
@@ -29,15 +29,12 @@
 		home-manager.users.${config.users.defaultUser} = {pkgs, ...}: {
 			# Import hyprland home-manager module
 			imports = [
-				inputs.hyprland.homeManagerModules.default
 				./rofi/rofi.nix
 				./waybar/waybar.nix
 				./wlogout/wlogout.nix
 			];
 			# Setup packages needed for hyprland
 			home.packages = with pkgs; [
-				#TODO: Should system be provided as input? "${system}" (config.hyprland.system or similar?)
-				inputs.hyprland-qtutils.packages."x86_64-linux".default
 				# Polkit agent
 				hyprpolkitagent
 				# Clipboard support
@@ -63,34 +60,9 @@
 				playerctl
 			];
 
-			# Use hyprland home-manager module to set hyprbars plugin (linked to nix-store)
+			# Use hyprland home-manager module to set config
 			wayland.windowManager.hyprland = {
 				enable = true;
-				package = inputs.hyprland.packages.${pkgs.system}.hyprland; # Make sure package follows flake input
-				plugins = [
-					inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
-				];
-				settings = {
-					plugin = {
-						hyprbars = {
-							bar_color = "rgba(1E1E2FFF)";
-							bar_height = 24;
-							bar_button_padding = 10;
-							bar_text_size = 10;
-							bar_text_font = "JetBrainsMono Nerd Font Bold";
-							"col.text" = "rgba(bd93f9ff)";
-							bar_part_of_window = true;
-							bar_precedence_over_border = true;
-
-							# hyprbars-button = color, size, on-click
-							hyprbars-button = [
-								"rgba(ff4040f0), 10, , hyprctl dispatch killactive       # Close button"
-								"rgba(40ff40f0), 10, 󰊓, hyprctl dispatch fullscreen 0     # Fullscreen button"
-							];
-						};
-					};
-				};
-				# Remaining config is in hyprland.conf
 				extraConfig = builtins.readFile ./hyprland.conf;
 			};
 

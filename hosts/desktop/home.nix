@@ -3,7 +3,6 @@
 	# Import home-manager modules
 	imports = [
 		inputs.self.homeManagerModules
-		inputs.hyprpanel.homeManagerModules.hyprpanel
 	];
 
 	# Enable and configure modules
@@ -24,41 +23,6 @@
 	nix = {
 		#package = pkgs.nix;
 		settings.experimental-features = [ "nix-command" "flakes" ];
-	};
-
-	programs.hyprpanel = {
-		enable = false;
-		systemd.enable = true;
-		hyprland.enable = true;
-		overwrite.enable = true;
-		#theme = "gruvbox_split";
-		layout = {
-			"bar.layouts" = {
-				"0" = {
-					left = [ "dashboard" "workspaces" ];
-					middle = [ "media" ];
-					right = [ "volume" "systray" "notifications" ];
-				};
-			};
-		};
-		settings = {
-			bar.launcher.autoDetectIcon = true;
-			bar.workspaces.show_icons = true;
-			menus.clock = {
-				time = {
-					military = true;
-					hideSeconds = true;
-				};
-				weather.unit = "metric";
-			};
-			menus.dashboard.directories.enabled = false;
-			menus.dashboard.stats.enable_gpu = true;
-			theme.bar.transparent = true;
-			theme.font = {
-				name = "Jetbrains Mono";
-				size = "16px";
-			};
-		};
 	};
 
 	home.pointerCursor = lib.mkForce {

@@ -9,13 +9,6 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		hyprland.url = "github:hyprwm/Hyprland";
-		hyprland-plugins = {
-			url = "github:hyprwm/hyprland-plugins";
-			inputs.hyprland.follows = "hyprland";
-		};
-		hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
-
 		nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
 	};
 
@@ -24,7 +17,6 @@
 			system = "x86_64-linux";
 		in
 			{
-
 			nixosModules = import ./modules/nixos;
 			homeManagerModules = import ./modules/home-manager;
 
