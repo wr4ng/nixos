@@ -18,6 +18,7 @@
 			qdirstat
 			spotify
 			vscode
+			slack
 			(google-chrome.override {
 				commandLineArgs = [
 					"--ozone-platform-hint=auto" # To allow to run natively on wayland
