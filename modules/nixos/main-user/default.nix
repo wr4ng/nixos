@@ -33,6 +33,7 @@ in
 			cbonsai
 			fastfetch
 			powertop
+			xh
 		];
 	};
 
