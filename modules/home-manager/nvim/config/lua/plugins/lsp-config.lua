@@ -19,7 +19,7 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			-- Setup LSP servers (need to be installed by Mason)
-			local lsp_servers = { 'lua_ls', 'gopls', 'clangd', 'jdtls', 'rust_analyzer', 'nil_ls' }
+			local lsp_servers = { 'lua_ls', 'gopls', 'clangd', 'jdtls', 'rust_analyzer', 'nil_ls', 'ts_ls' }
 			for _, server in pairs(lsp_servers)
 			do
 				require("lspconfig")[server].setup {
