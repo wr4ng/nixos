@@ -23,21 +23,36 @@
     gh
     python3
     lazygit
+    nerd-fonts.jetbrains-mono
   ];
 
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+  };
 
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  ];
+  fonts.fontconfig.enable = true;
+
+  # Set GNOME settings + keybindings
+  dconf.settings = {
+    "org/gnome/desktop/wm/keybindings" = {
+      close = ["<Super>q"];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      www = ["<Super>w"];
+    };
+    # Add custom binding for terminal
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+      ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      name = "Open Terminal";
+      command = "kitty";
+      binding = "<Super>Return";
+    };
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
