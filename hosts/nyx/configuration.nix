@@ -90,18 +90,13 @@
     isNormalUser = true;
     description = "Mads Christian Wrang Nielsen";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-	google-chrome
-	kitty
-	gh
-	python3
-        lazygit
-    ];
   };
 
   programs.zsh.enable = true;
 
   home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
     users = {
       "wr4ng" = import ./home.nix;
