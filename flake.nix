@@ -16,7 +16,10 @@
         { nix.settings.experimental-features = ["nix-command" "flakes"]; } # Module to enable experimental nix features needed for flakes
         ./hosts/nyx/configuration.nix
 	inputs.home-manager.nixosModules.default
+	# TODO: Import nixos modules
       ];
     };
+
+    homeManagerModules.default = ./modules/home-manager;
   };
 }
