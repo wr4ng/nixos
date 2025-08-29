@@ -23,7 +23,6 @@
   # environment.
   home.packages = with pkgs; [
     google-chrome
-    kitty
     gh
     python3
     lazygit
