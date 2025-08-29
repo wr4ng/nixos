@@ -1,9 +1,7 @@
 { inputs, config, pkgs, ... }:
 
 {
-  imports = [
-    inputs.self.outputs.homeManagerModules.default
-  ];
+  imports = [ inputs.self.outputs.homeManagerModules.default ];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -32,6 +30,9 @@
     discord
     tree
     ripgrep
+    unzip
+    gcc
+    rustup
     gnome-extension-manager
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-dock
@@ -40,32 +41,29 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    extraPackages = with pkgs; [ lua-language-server ];
   };
 
   fonts.fontconfig.enable = true;
 
   # Set GNOME settings + keybindings
   dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
-    "org/gnome/desktop/wm/keybindings" = {
-      close = ["<Super>q"];
-    };
-    "org/gnome/settings-daemon/plugins/media-keys" = {
-      www = ["<Super>w"];
-    };
+    "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
+    "org/gnome/desktop/wm/keybindings" = { close = [ "<Super>q" ]; };
+    "org/gnome/settings-daemon/plugins/media-keys" = { www = [ "<Super>w" ]; };
     # Add custom binding for terminal
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
       ];
     };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      name = "Open Terminal";
-      command = "kitty";
-      binding = "<Super>Return";
-    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" =
+      {
+        name = "Open Terminal";
+        command = "kitty";
+        binding = "<Super>Return";
+      };
     "org/gnome/shell" = {
       disable-user-extensions = false;
       enabled-extensions = with pkgs.gnomeExtensions; [

@@ -1,8 +1,6 @@
 { pkgs, lib, config, ... }: {
 
-  options = {
-    module.shell.enable = lib.mkEnableOption "enable shell module";
-  };
+  options = { module.shell.enable = lib.mkEnableOption "enable shell module"; };
 
   config = lib.mkIf config.module.shell.enable {
     programs.zsh = {
@@ -12,10 +10,7 @@
       oh-my-zsh = {
         enable = true;
         theme = "robbyrussell";
-        plugins = [
-          "git"
-          "history"
-        ];
+        plugins = [ "git" "history" ];
       };
     };
 

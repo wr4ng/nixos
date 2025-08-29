@@ -5,11 +5,10 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -98,9 +97,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
-    users = {
-      "wr4ng" = import ./home.nix;
-    };
+    users = { "wr4ng" = import ./home.nix; };
   };
 
   # Allow unfree packages
@@ -108,10 +105,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-  ];
+  environment.systemPackages = with pkgs; [ vim wget ];
 
   programs.git.enable = true;
 
