@@ -27,6 +27,10 @@
     python3
     lazygit
     nerd-fonts.jetbrains-mono
+    vscode
+    obsidian
+    tree
+    ripgrep
   ];
 
   programs.neovim = {
