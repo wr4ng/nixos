@@ -29,8 +29,12 @@
     nerd-fonts.jetbrains-mono
     vscode
     obsidian
+    discord
     tree
     ripgrep
+    gnome-extension-manager
+    gnomeExtensions.appindicator
+    gnomeExtensions.dash-to-dock
   ];
 
   programs.neovim = {
@@ -61,6 +65,20 @@
       name = "Open Terminal";
       command = "kitty";
       binding = "<Super>Return";
+    };
+    "org/gnome/shell" = {
+      disable-user-extensions = false;
+      enabled-extensions = with pkgs.gnomeExtensions; [
+        appindicator.extensionUuid
+        dash-to-dock.extensionUuid
+      ];
+      favorite-apps = [
+        "org.gnome.Nautilus.desktop"
+        "kitty.desktop"
+        "google-chrome.desktop"
+        "obsidian.desktop"
+        "code.desktop"
+      ];
     };
   };
 
