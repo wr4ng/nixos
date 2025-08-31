@@ -30,6 +30,7 @@
     discord
     tree
     ripgrep
+    fd
     unzip
     gcc
     rustup
@@ -112,7 +113,7 @@
   #  /etc/profiles/per-user/wr4ng/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.
