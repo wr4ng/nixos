@@ -112,9 +112,13 @@
   #
   #  /etc/profiles/per-user/wr4ng/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
+  home.sessionVariables = { EDITOR = "nvim"; };
+
+  # Symlink config to ~/.config/nvim/
+  # using mkOutOfStoreSymlink to link the folder directly instead of using the nix store
+  # Allows neovim to update lazy-lock.json
+  home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink
+    "${config.home.homeDirectory}/nixos/modules/home-manager/nvim/config";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
