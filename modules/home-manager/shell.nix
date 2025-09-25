@@ -12,9 +12,18 @@
         theme = "robbyrussell";
         plugins = [ "git" "history" ];
       };
+      shellAliases = {
+        cd = "z";
+        open = "xdg-open";
+      };
     };
 
     programs.fzf = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    programs.zoxide = {
       enable = true;
       enableZshIntegration = true;
     };

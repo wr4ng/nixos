@@ -24,6 +24,7 @@ vim.pack.add({
 	{ src = "https://github.com/folke/snacks.nvim" },
 	{ src = "https://github.com/folke/which-key.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
+	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
 	{ src = "https://github.com/nvim-mini/mini.completion" },
 	{ src = "https://github.com/nvim-mini/mini.icons" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
@@ -34,7 +35,8 @@ vim.keymap.set("n", "<leader>?", function() require("which-key").show({ global =
 	{ desc = "Buffer Local Keymaps (which-key)" })
 
 require("mason").setup()
-vim.lsp.enable({ "lua_ls", "nil_ls" })
+require("mason-lspconfig").setup()
+-- vim.lsp.enable({ "lua_ls", "nil_ls", "rust-analyzer" })
 
 -- Setup LSP keybindings
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "hover documentation" })

@@ -34,9 +34,16 @@
     unzip
     gcc
     rustup
+    uv
+    pnpm
+    nodejs
+    bruno
+    typst
     gnome-extension-manager
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-dock
+    whatsapp-electron
+    pinta
   ];
 
   programs.neovim = {
@@ -50,9 +57,17 @@
 
   # Set GNOME settings + keybindings
   dconf.settings = {
-    "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      show-battery-percentage = true;
+    };
     "org/gnome/desktop/wm/keybindings" = { close = [ "<Super>q" ]; };
     "org/gnome/settings-daemon/plugins/media-keys" = { www = [ "<Super>w" ]; };
+    # Make Alt+Tab switch through all open windows instead of applications
+    "org/gnome/desktop/wm/keybindings" = {
+      switch-windows = [ "<Alt>Tab" ];
+      switch-windows-backward = [ "<Shift><Alt>Tab" ];
+    };
     # Add custom binding for terminal
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
@@ -65,6 +80,9 @@
         command = "kitty";
         binding = "<Super>Return";
       };
+    "org/gnome/shell/keybindings" = {
+      show-screenshot-ui = [ "<Shift><Super>s" ];
+    };
     "org/gnome/shell" = {
       disable-user-extensions = false;
       enabled-extensions = with pkgs.gnomeExtensions; [

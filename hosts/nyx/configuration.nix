@@ -105,13 +105,20 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ vim wget ];
+  environment.systemPackages = with pkgs; [ vim wget conda ];
 
   programs.git.enable = true;
 
   programs.localsend = {
     enable = true;
     openFirewall = true;
+  };
+
+  programs = {
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [ stdenv.cc.cc.lib zlib file ];
+    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -10,7 +10,7 @@
       themeFile = "Catppuccin-Macchiato";
       font.package = pkgs.nerd-fonts.jetbrains-mono;
       font.name = "JetBrainsMono Nerd Font Mono";
-      font.size = 12;
+      font.size = 14;
       settings = {
         enable_audio_bell = false;
         open_url_with = "default";
