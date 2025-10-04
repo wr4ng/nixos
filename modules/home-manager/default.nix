@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ lib, ... }: {
   imports = [ ./shell.nix ./kitty.nix ];
 
   module.shell.enable = lib.mkDefault true;

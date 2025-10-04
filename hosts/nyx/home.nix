@@ -31,8 +31,10 @@
     tree
     ripgrep
     fd
+    zip
     unzip
     gcc
+    file
     rustup
     uv
     pnpm
@@ -44,6 +46,7 @@
     gnomeExtensions.dash-to-dock
     whatsapp-electron
     pinta
+    blender
   ];
 
   programs.neovim = {

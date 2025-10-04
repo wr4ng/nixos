@@ -52,6 +52,10 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
+  # Docker
+  module.docker.enable = true;
+  module.docker.username = "wr4ng";
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "dk";
@@ -99,6 +103,8 @@
     extraSpecialArgs = { inherit inputs; };
     users = { "wr4ng" = import ./home.nix; };
   };
+
+  fonts.packages = with pkgs; [ roboto source-sans-pro ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: {
+{ lib, config, ... }: {
 
   options = { module.shell.enable = lib.mkEnableOption "enable shell module"; };
 
@@ -16,6 +16,11 @@
         cd = "z";
         open = "xdg-open";
       };
+      initContent = ''
+        if [[ -n "$IN_NIX_SHELL" ]]; then
+          PROMPT="(nix) $PROMPT"
+        fi
+      '';
     };
 
     programs.fzf = {
