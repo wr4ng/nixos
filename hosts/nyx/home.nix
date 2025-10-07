@@ -102,6 +102,23 @@
     };
   };
 
+  home.pointerCursor = {
+    name = "Banana";
+    size = 32;
+    package = pkgs.banana-cursor;
+    x11.enable = true;
+    gtk.enable = true;
+  };
+
+  gtk = {
+    enable = true;
+    cursorTheme = {
+      name = "Banana";
+      size = 32;
+      package = pkgs.banana-cursor;
+    };
+  };
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
