@@ -1,0 +1,5 @@
+pane_frames false
+
+keybinds {
+	unbind "Ctrl h" // unbind Ctrl+h in all modes
+}
