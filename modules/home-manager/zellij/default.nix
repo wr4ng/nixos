@@ -5,7 +5,6 @@
   config = lib.mkIf config.module.zellij.enable {
     programs.zellij = {
       enable = true;
-      enableZshIntegration = true;
     };
     xdg.configFile."zellij".source = ./config;
   };
