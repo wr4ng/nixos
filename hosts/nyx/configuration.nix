@@ -48,6 +48,12 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+  # Hardware acceleration
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
@@ -55,6 +61,9 @@
   # Docker
   module.docker.enable = true;
   module.docker.username = "wr4ng";
+
+  # Steam
+  module.steam.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
