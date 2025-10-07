@@ -32,5 +32,7 @@
       enable = true;
       enableZshIntegration = true;
     };
+
+    programs.fastfetch.enable = true;
   };
 }
