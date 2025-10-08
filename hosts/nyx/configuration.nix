@@ -58,12 +58,23 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
+  # Power management
+  powerManagement.enable = true;
+
   # Docker
   module.docker.enable = true;
   module.docker.username = "wr4ng";
 
   # Steam
   module.steam.enable = true;
+
+  # 1Password
+  module.onepassword.enable = true;
+  module.onepassword.username = "wr4ng";
+
+  # virt-manager
+  module.virt-manager.enable = true;
+  module.virt-manager.username = "wr4ng";
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -120,7 +131,11 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ vim wget conda ];
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    powertop
+  ];
 
   programs.git.enable = true;
 
