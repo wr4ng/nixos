@@ -1,4 +1,4 @@
-{ lib, config,  ... }:
+{ lib, config, pkgs, ... }:
 
 with lib;
 
@@ -17,5 +17,8 @@ in {
   config = mkIf cfg.enable {
     virtualisation.docker.enable = true;
 		users.users.${cfg.username}.extraGroups = [ "docker" ];
+    environment.systemPackages = [
+      pkgs.lazydocker
+    ];
   };
 }
