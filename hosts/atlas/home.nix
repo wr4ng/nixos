@@ -22,6 +22,7 @@
     obsidian
     discord
     pinta
+    orca-slicer
     # TODO: Move to some Gnome config module
     gnome-extension-manager
     gnomeExtensions.appindicator
