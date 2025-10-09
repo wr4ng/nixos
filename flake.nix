@@ -22,6 +22,16 @@
       ];
     };
 
+    nixosConfigurations.atlas = inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [
+        { nix.settings.experimental-features = [ "nix-command" "flakes" ]; }
+        ./hosts/atlas/configuration.nix
+        ./modules/nixos
+        inputs.home-manager.nixosModules.default
+      ];
+    };
+
     homeManagerModules.default = ./modules/home-manager;
   };
 }

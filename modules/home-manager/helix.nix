@@ -7,6 +7,7 @@
   config = lib.mkIf config.module.helix.enable {
     programs.helix = {
       enable = true;
+      defaultEditor = true;
       settings.theme = "catppuccin_macchiato";
     };
 

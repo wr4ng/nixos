@@ -7,7 +7,11 @@ sudo nixos-rebuild switch --flake ~/nixos#{SYSTEM}
 
 # Rebuild laptop:
 sudo nixos-rebuild switch --flake ~/nixos#nyx
+
+# Rebuild desktop
+sudo nixos-rebuild switch --flake .#atlas
 ```
+
 ## Running `Appimage` files
 
 ```shell
