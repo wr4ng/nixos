@@ -9,7 +9,7 @@
 
   # Bootloader.
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.timeout = null; # No timeout, need to select
+  boot.loader.timeout = 15; # Long timeout
   boot.loader.grub = {
     enable = true;
     default = "saved";
@@ -68,7 +68,11 @@
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = false;
+    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+    # Enable this if you have graphical corruption issues or application crashes after waking
+    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
+    # of just the bare essentials.
+    powerManagement.enable = true;
     powerManagement.finegrained = false;
     open = true;
     nvidiaSettings = true;
