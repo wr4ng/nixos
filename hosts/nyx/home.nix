@@ -21,6 +21,7 @@
   # environment.
   home.packages = with pkgs; [
     google-chrome
+    spotify
     gh
     python3
     lazygit
