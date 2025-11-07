@@ -42,6 +42,7 @@
     nodejs
     bruno
     typst
+    tinymist
     gnome-extension-manager
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-dock
