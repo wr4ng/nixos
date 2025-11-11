@@ -15,6 +15,7 @@
       shellAliases = {
         cd = "z";
         open = "xdg-open";
+				ls="eza --icons --group-directories-first --sort type --color=always";
       };
       initContent = ''
         if [[ -n "$IN_NIX_SHELL" ]]; then
@@ -34,6 +35,11 @@
     };
 
     programs.yazi = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    programs.eza = {
       enable = true;
       enableZshIntegration = true;
     };
