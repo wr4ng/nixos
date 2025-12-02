@@ -36,10 +36,6 @@
     unzip
     gcc
     file
-    rustup
-    uv
-    pnpm
-    nodejs
     bruno
     typst
     tinymist
@@ -49,6 +45,9 @@
     whatsapp-electron
     pinta
     blender
+    darktable
+    orca-slicer
+    handbrake
   ];
 
   programs.neovim = {
