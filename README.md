@@ -18,3 +18,14 @@ sudo nixos-rebuild switch --flake .#atlas
 nix-shell -p appimage-run         # Enter nix shell with ability to run .AppImage files
 appimage-run <something.AppImage> # Run AppImage
 ```
+
+## Cleanup and generations
+List nix generations:
+```shell
+sudo nix-env -p /nix/var/nix/profiles/system --list-generations
+```
+
+Delete all older generations (and store entries):
+```shell
+sudo nix-collect-garbage --delete-old
+```
