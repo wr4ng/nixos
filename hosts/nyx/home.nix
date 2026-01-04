@@ -48,6 +48,8 @@
     darktable
     orca-slicer
     handbrake
+    nettools
+    calibre
   ];
 
   programs.neovim = {
