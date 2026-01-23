@@ -39,6 +39,7 @@
     bruno
     typst
     tinymist
+    uv
     gnome-extension-manager
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-dock
