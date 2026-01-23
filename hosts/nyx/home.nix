@@ -47,6 +47,7 @@
     blender
     darktable
     orca-slicer
+    bambu-studio
     handbrake
     nettools
     calibre
