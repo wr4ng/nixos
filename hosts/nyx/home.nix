@@ -51,6 +51,7 @@
     bambu-studio
     nettools
     calibre
+    pdfarranger
   ];
 
   programs.neovim = {
@@ -93,6 +94,7 @@
       enabled-extensions = with pkgs.gnomeExtensions; [
         appindicator.extensionUuid
         dash-to-dock.extensionUuid
+        gnomeExtensions.wallpaper-slideshow
       ];
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
