@@ -43,6 +43,7 @@
     gnome-extension-manager
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-dock
+    gnomeExtensions.wallpaper-slideshow
     whatsapp-electron
     pinta
     blender
@@ -94,7 +95,7 @@
       enabled-extensions = with pkgs.gnomeExtensions; [
         appindicator.extensionUuid
         dash-to-dock.extensionUuid
-        gnomeExtensions.wallpaper-slideshow
+        wallpaper-slideshow.extensionUuid
       ];
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
