@@ -53,6 +53,8 @@
     nettools
     calibre
     pdfarranger
+    bitwarden-desktop
+    foliate
   ];
 
   programs.neovim = {

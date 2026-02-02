@@ -68,10 +68,6 @@
   # Steam
   module.steam.enable = true;
 
-  # 1Password
-  module.onepassword.enable = true;
-  module.onepassword.username = "wr4ng";
-
   # virt-manager
   module.virt-manager.enable = true;
   module.virt-manager.username = "wr4ng";
