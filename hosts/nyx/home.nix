@@ -29,7 +29,6 @@
     vscode
     obsidian
     discord
-    tree
     ripgrep
     fd
     zip
@@ -55,6 +54,15 @@
     pdfarranger
     bitwarden-desktop
     foliate
+    just
+    # For LibreOffice Calc (Quantitative Sustainability)
+    libreoffice-fresh
+    # Rust
+    cargo
+    rustc
+    rustfmt
+    rust-analyzer
+    clippy
   ];
 
   programs.neovim = {
