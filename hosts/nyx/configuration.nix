@@ -68,10 +68,6 @@
   # Steam
   module.steam.enable = true;
 
-  # virt-manager
-  module.virt-manager.enable = true;
-  module.virt-manager.username = "wr4ng";
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "dk";
