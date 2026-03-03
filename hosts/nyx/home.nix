@@ -65,11 +65,6 @@
     clippy
   ];
 
-  programs.neovim = {
-    enable = true;
-    extraPackages = with pkgs; [ lua-language-server ];
-  };
-
   fonts.fontconfig.enable = true;
 
   # Set GNOME settings + keybindings
@@ -136,13 +131,6 @@
 
   home.file = {
   };
-
-  # TODO: Remove or move
-  # Symlink config to ~/.config/nvim/
-  # using mkOutOfStoreSymlink to link the folder directly instead of using the nix store
-  # Allows neovim to update lazy-lock.json
-  home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink
-    "${config.home.homeDirectory}/nixos/modules/home-manager/nvim/config";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
