@@ -35,8 +35,23 @@
     zip
     unzip
     file
+    gcc
+    just
     # TODO: Move to kitty module
     nerd-fonts.jetbrains-mono
+
+    nettools
+
+    bitwarden-desktop
+    easyeffects
+    nh
+
+    # Rust
+    cargo
+    rustc
+    rustfmt
+    rust-analyzer
+    clippy
   ];
 
   # Set GNOME settings + keybindings
