@@ -13,7 +13,9 @@
       enable = true;
       defaultEditor = true;
       extraPackages = with pkgs; [
-		nodejs_25
+        nodejs_25
+        nil
+        tree-sitter
       ];
     };
 
@@ -21,7 +23,6 @@
       lua5_1
       luarocks
       python3Packages.pip
-      tree-sitter
     ];
 
     # Symlink config to ~/.config/nvim/
