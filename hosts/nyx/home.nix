@@ -41,7 +41,6 @@
     unzip
     gcc
     file
-    bruno
     typst
     tinymist
     uv
@@ -49,17 +48,13 @@
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-dock
     gnomeExtensions.wallpaper-slideshow
-    whatsapp-electron
     pinta
-    blender
-    darktable
     orca-slicer
     bambu-studio
     nettools
     calibre
     pdfarranger
     bitwarden-desktop
-    foliate
     just
     # For LibreOffice Calc (Quantitative Sustainability)
     libreoffice-fresh
