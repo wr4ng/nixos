@@ -15,6 +15,7 @@
       extraPackages = with pkgs; [
         nodejs_25
         nil
+        lua-language-server
         tree-sitter
       ];
     };

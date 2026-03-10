@@ -91,7 +91,7 @@ require("lazy").setup({
 		{
 			"mason-org/mason-lspconfig.nvim",
 			opts = {
-				ensure_installed = { "lua_ls", "rust_analyzer" },
+				ensure_installed = {},
 			},
 			dependencies = {
 				{ "mason-org/mason.nvim", opts = {} },
@@ -121,6 +121,9 @@ require("lazy").setup({
 	},
 	checker = { enabled = true },
 })
+
+vim.lsp.enable("nil_ls")
+vim.lsp.enable("lua_ls")
 
 vim.keymap.set("i", "jj", "<ESC>", { desc = "exit insert mode", silent = true })
 
