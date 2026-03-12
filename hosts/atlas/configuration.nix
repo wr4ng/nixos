@@ -1,11 +1,15 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
+  ];
 
   # Bootloader.
   boot.loader.efi.canTouchEfiVariables = true;
@@ -19,13 +23,13 @@
     devices = [ "nodev" ];
     fontSize = 12;
     extraEntries = ''
-			menuentry "Reboot" --class restart {
-				reboot
-			}
-			menuentry "Poweroff" --class shutdown {
-				halt
-			}
-		'';
+      menuentry "Reboot" --class restart {
+        reboot
+      }
+      menuentry "Poweroff" --class shutdown {
+        halt
+      }
+    '';
   };
 
   time.hardwareClockInLocalTime = true;
@@ -65,7 +69,7 @@
 
   # NVIDIA + graphics
   hardware.graphics.enable = true;
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     modesetting.enable = true;
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
@@ -80,7 +84,8 @@
   };
 
   boot.initrd.kernelModules = [ "nvidia" ];
-  boot.blacklistedKernelModules = ["nouveau"];
+  boot.blacklistedKernelModules = [ "nouveau" ];
+  boot.kernelParams = [ "nvidia.NVreg_TemporaryFilePath=/var/tmp" ];
 
   # Power management
   powerManagement.enable = true;
@@ -119,7 +124,10 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "Mads Christian Wrang Nielsen";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
 
   programs.zsh.enable = true;
@@ -128,7 +136,9 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
-    users = { "wr4ng" = import ./home.nix; };
+    users = {
+      "wr4ng" = import ./home.nix;
+    };
   };
 
   # Allow unfree packages
