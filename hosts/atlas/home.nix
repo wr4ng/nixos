@@ -1,4 +1,9 @@
-{ inputs, config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   imports = [ inputs.self.outputs.homeManagerModules.default ];
@@ -43,7 +48,8 @@
     nettools
 
     bitwarden-desktop
-    easyeffects
+    qpwgraph
+    pavucontrol
     nh
 
     # Rust
@@ -60,8 +66,12 @@
       color-scheme = "prefer-dark";
       show-battery-percentage = true;
     };
-    "org/gnome/desktop/wm/keybindings" = { close = [ "<Super>q" ]; };
-    "org/gnome/settings-daemon/plugins/media-keys" = { www = [ "<Super>w" ]; };
+    "org/gnome/desktop/wm/keybindings" = {
+      close = [ "<Super>q" ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      www = [ "<Super>w" ];
+    };
     # Make Alt+Tab switch through all open windows instead of applications
     "org/gnome/desktop/wm/keybindings" = {
       switch-windows = [ "<Alt>Tab" ];
@@ -73,12 +83,11 @@
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
       ];
     };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" =
-      {
-        name = "Open Terminal";
-        command = "kitty";
-        binding = "<Super>Return";
-      };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      name = "Open Terminal";
+      command = "kitty";
+      binding = "<Super>Return";
+    };
     "org/gnome/shell/keybindings" = {
       show-screenshot-ui = [ "<Shift><Super>s" ];
     };
@@ -118,12 +127,6 @@
       package = pkgs.banana-cursor;
     };
   };
-
-  # Symlink config to ~/.config/nvim/
-  # using mkOutOfStoreSymlink to link the folder directly instead of using the nix store
-  # Allows neovim to update lazy-lock.json
-  # home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink
-  #  "${config.home.homeDirectory}/nixos/modules/home-manager/nvim/config";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
