@@ -139,6 +139,22 @@
     vim
     wget
     powertop
+    qmk
+    via
+    vial
+  ];
+
+  hardware.keyboard.qmk = {
+    enable = true;
+    keychronSupport = true;
+  };
+
+  services.udev.packages = with pkgs; [
+    qmk
+    qmk-udev-rules
+    qmk_hid
+    via
+    vial
   ];
 
   programs.git.enable = true;
