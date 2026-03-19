@@ -58,6 +58,8 @@
     rustfmt
     rust-analyzer
     clippy
+
+    devenv
   ];
 
   # Set GNOME settings + keybindings
@@ -107,7 +109,7 @@
     };
     # Disable default dash-to-dock "Show dock" shortcut (conflicting with close window)
     "org/gnome/shell/extensions/dash-to-dock" = {
-        shortcut = [];
+      shortcut = [ ];
     };
   };
 
