@@ -67,6 +67,8 @@
 
     hledger
     hledger-web
+
+	signal-desktop
   ];
 
   fonts.fontconfig.enable = true;
