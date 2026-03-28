@@ -64,6 +64,9 @@
     rustfmt
     rust-analyzer
     clippy
+
+    hledger
+    hledger-web
   ];
 
   fonts.fontconfig.enable = true;
