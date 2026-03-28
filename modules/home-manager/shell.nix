@@ -69,6 +69,7 @@
     programs.yazi = {
       enable = true;
       enableZshIntegration = true;
+      shellWrapperName = "y"; # Silence warning related to older `home.stateVersion`
     };
 
 		programs.lsd = {

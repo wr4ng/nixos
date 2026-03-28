@@ -134,9 +134,7 @@
       size = 32;
       package = pkgs.banana-cursor;
     };
-  };
-
-  home.file = {
+    gtk4.theme = null; # Silence warning related to older `home.stateVersion`
   };
 
   # Let Home Manager install and manage itself.
