@@ -2,10 +2,16 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
   ];
@@ -104,7 +110,10 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "Mads Christian Wrang Nielsen";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
 
   programs.zsh.enable = true;
@@ -113,10 +122,15 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
-    users = { "wr4ng" = import ./home.nix; };
+    users = {
+      "wr4ng" = import ./home.nix;
+    };
   };
 
-  fonts.packages = with pkgs; [ roboto source-sans-pro ];
+  fonts.packages = with pkgs; [
+    roboto
+    source-sans-pro
+  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
