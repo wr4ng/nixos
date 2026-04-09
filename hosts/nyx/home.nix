@@ -27,6 +27,7 @@
   home.packages = with pkgs; [
     nh
     google-chrome
+    brave
     spotify
     gh
     python3
@@ -55,9 +56,11 @@
     calibre
     pdfarranger
     bitwarden-desktop
+    bitwarden-cli
     just
     # For LibreOffice Calc (Quantitative Sustainability)
     libreoffice-fresh
+    onlyoffice-desktopeditors
     # Rust
     cargo
     rustc
@@ -68,7 +71,7 @@
     hledger
     hledger-web
 
-	signal-desktop
+    signal-desktop
   ];
 
   fonts.fontconfig.enable = true;
@@ -137,6 +140,10 @@
       package = pkgs.banana-cursor;
     };
     gtk4.theme = null; # Silence warning related to older `home.stateVersion`
+  };
+
+  home.sessionVariables = {
+    LEDGER_FILE = "~/finances/main.journal";
   };
 
   # Let Home Manager install and manage itself.
