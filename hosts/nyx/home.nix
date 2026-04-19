@@ -29,6 +29,7 @@
     google-chrome
     brave
     spotify
+    mpv
     gh
     python3
     lazygit
@@ -72,6 +73,8 @@
     hledger-web
 
     signal-desktop
+
+    planify
   ];
 
   fonts.fontconfig.enable = true;

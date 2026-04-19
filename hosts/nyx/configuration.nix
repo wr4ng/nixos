@@ -105,6 +105,11 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.wr4ng = {
     shell = pkgs.zsh;
