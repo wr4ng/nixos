@@ -47,14 +47,6 @@ require("lazy").setup({
 			lazy = false,
 			priority = 1000,
 			config = function()
-				-- Custom comment coloring
-				-- require("catppuccin").setup({
-				--   custom_highlights = function(colors)
-				--     return {
-				--       Comment = { fg = colors.flamingo },
-				--     }
-				--   end,
-				-- })
 				vim.cmd([[colorscheme catppuccin-mocha]])
 			end,
 		},

@@ -18,6 +18,11 @@
         lua-language-server
         tree-sitter
       ];
+      sideloadInitLua = true;
+
+      # Adopt new programs.neovim defaults (for nyx)
+      withRuby = false;
+      withPython3 = false;
     };
 
     home.packages = with pkgs; [
