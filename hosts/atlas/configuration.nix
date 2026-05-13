@@ -34,8 +34,8 @@
 
   time.hardwareClockInLocalTime = true;
 
-  # Use latest kernel
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  # Use latest kernel.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "atlas"; # Define your hostname.
 

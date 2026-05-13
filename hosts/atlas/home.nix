@@ -22,6 +22,7 @@
 
   home.packages = with pkgs; [
     google-chrome
+    brave
     gh
     vscode
     obsidian
@@ -60,6 +61,12 @@
     clippy
 
     devenv
+
+    planify
+    mpv
+    spotify
+
+    melonds
   ];
 
   # Set GNOME settings + keybindings
