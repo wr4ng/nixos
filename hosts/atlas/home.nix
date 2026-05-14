@@ -53,12 +53,7 @@
     pavucontrol
     nh
 
-    # Rust
-    cargo
-    rustc
-    rustfmt
-    rust-analyzer
-    clippy
+    rustup
 
     devenv
 
@@ -109,7 +104,7 @@
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
         "kitty.desktop"
-        "google-chrome.desktop"
+        "brave-browser.desktop"
         "obsidian.desktop"
         "code.desktop"
       ];
