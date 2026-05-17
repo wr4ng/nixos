@@ -105,11 +105,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  services.syncthing = {
-    enable = true;
-    openDefaultPorts = true;
-  };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.wr4ng = {
     shell = pkgs.zsh;
@@ -153,6 +148,14 @@
   programs.localsend = {
     enable = true;
     openFirewall = true;
+  };
+
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+    user = "wr4ng";
+    dataDir = "/home/wr4ng/syncthing";
+	configDir = "/home/wr4ng/.config/syncthing";
   };
 
   # Enable running non-nix binaries. See https://nix.dev/guides/faq.html#how-to-run-non-nix-executables
