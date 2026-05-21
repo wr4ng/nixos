@@ -17,7 +17,23 @@
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.grub = {
+    enable = true;
+    configurationLimit = 5;
+    efiSupport = true;
+    useOSProber = true;
+    devices = [ "nodev" ];
+    fontSize = 12;
+    extraEntries = ''
+      menuentry "Reboot" --class restart {
+        reboot
+      }
+      menuentry "Poweroff" --class shutdown {
+        halt
+      }
+    '';
+  };
+  boot.loader.timeout = 15; # Long timeout
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
