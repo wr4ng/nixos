@@ -57,7 +57,6 @@
     calibre
     pdfarranger
     bitwarden-desktop
-    bitwarden-cli
     just
     # For LibreOffice Calc (Quantitative Sustainability)
     libreoffice-fresh
