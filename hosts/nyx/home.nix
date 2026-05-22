@@ -119,7 +119,7 @@
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
         "kitty.desktop"
-        "google-chrome.desktop"
+        "brave-browser.desktop"
         "obsidian.desktop"
         "code.desktop"
       ];
