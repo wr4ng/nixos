@@ -113,6 +113,9 @@
     "org/gnome/shell/extensions/dash-to-dock" = {
       shortcut = [ ];
     };
+    "org/gnome/desktop/peripherals/mouse" = {
+      accel-profile = "flat";
+    };
   };
 
   home.pointerCursor = {
