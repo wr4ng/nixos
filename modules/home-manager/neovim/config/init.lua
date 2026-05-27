@@ -1,18 +1,4 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	if vim.v.shell_error ~= 0 then
-		vim.api.nvim_echo({
-			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out,                            "WarningMsg" },
-			{ "\nPress any key to exit..." },
-		}, true, {})
-		vim.fn.getchar()
-		os.exit(1)
-	end
-end
-vim.opt.rtp:prepend(lazypath)
+---@diagnostic disable: undefined-global
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
@@ -40,106 +26,58 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-require("lazy").setup({
-	spec = {
-		{
-			"catppuccin/nvim",
-			lazy = false,
-			priority = 1000,
-			config = function()
-				vim.cmd([[colorscheme catppuccin-mocha]])
-			end,
-		},
-		{
-			"lewis6991/gitsigns.nvim",
-			opts = {
-				signs = {
-					add = { text = "+" },
-					change = { text = "~" },
-					delete = { text = "_" },
-					topdelete = { text = "?" },
-					changedelete = { text = "~" },
-				},
-			},
-		},
-		{
-			"folke/which-key.nvim",
-			event = "VeryLazy",
-			init = function()
-				vim.o.timeout = true
-				vim.o.timeoutlen = 300
-			end,
-			opts = {
-			},
-		},
-		{
-			"folke/snacks.nvim",
-			opts = {
-				picker = {
-					enable = true,
-				}
-			},
-		},
-		{
-			"mason-org/mason-lspconfig.nvim",
-			opts = {
-				ensure_installed = {},
-			},
-			dependencies = {
-				{ "mason-org/mason.nvim", opts = {} },
-				"neovim/nvim-lspconfig",
-			},
-		},
-		{
-			"nvim-mini/mini.icons",
-			opts = {},
-		},
-		{
-			"nvim-mini/mini.completion",
-			opts = {},
-		},
-		{
-			'nvim-treesitter/nvim-treesitter',
-			lazy = false,
-			build = ':TSUpdate'
-		},
-		{
-			"ruifm/gitlinker.nvim",
-			opts = {},
-			dependencies = {
-				"nvim-lua/plenary.nvim",
-			},
-		},
-	},
-	checker = { enabled = true },
+vim.pack.add({
+	'https://github.com/neovim/nvim-lspconfig',
+	'https://github.com/mason-org/mason.nvim',
+	'https://github.com/mason-org/mason-lspconfig.nvim',
+	'https://github.com/nvim-mini/mini.completion',
+	{ src = 'https://github.com/catppuccin/nvim', name = "catppuccin" },
+	'https://github.com/folke/which-key.nvim',
+	'https://github.com/folke/snacks.nvim',
+	'https://github.com/lewis6991/gitsigns.nvim',
 })
 
-vim.lsp.enable("nil_ls")
-vim.lsp.enable("lua_ls")
+vim.cmd.colorscheme("catppuccin-mocha")
+
+require("mason").setup()
+require("mason-lspconfig").setup()
+require("mini.completion").setup()
+
+require("which-key").setup()
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300
+
+require("gitsigns").setup()
+require("snacks").setup({
+	picker = {
+		enabled = true
+	}
+})
 
 vim.keymap.set("i", "jj", "<ESC>", { desc = "exit insert mode", silent = true })
+vim.keymap.set("n", "<Tab>", "<cmd>bNext<CR>", { desc = "next buffer" })
 
--- diagnostic keymaps
--- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
--- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
--- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
--- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+-- Diagnostic keymaps
+vim.diagnostic.config({ virtual_text = true })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
--- disable arrow keys in normal mode
-vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
-vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
-vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
-vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+local function toggle_diagnostics()
+	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end
 
--- keybinds to make split navigation easier.
+vim.keymap.set('n', '<leader>dd', toggle_diagnostics, { desc = 'Toggle diagnostics' })
+
+-- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
---  See `:help wincmd` for a list of all window commands
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
--- highlight when yanking (copying) text
+-- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
 	desc = 'Highlight when yanking (copying) text',
 	group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
@@ -148,7 +86,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	end,
 })
 
--- clipboard
+-- Clipboard
 vim.keymap.set("n", '<leader>y', '"+y', { noremap = true, silent = true, desc = 'yank to clipboard' })
 vim.keymap.set({ "v", "x" }, '<leader>y', '"+y', { noremap = true, silent = true, desc = 'yank to clipboard' })
 vim.keymap.set({ "n", "v", "x" }, '<C-a>', 'gg0vG$', { noremap = true, silent = true, desc = 'select all' })
@@ -156,7 +94,7 @@ vim.keymap.set({ 'n', 'v', 'x' }, '<leader>p', '"+p', { noremap = true, silent =
 vim.keymap.set('i', '<C-p>', '<C-r>+',
 	{ noremap = true, silent = true, desc = 'paste from clipboard from within insert mode' })
 
--- lsp
+-- LSP
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "hover documentation" })
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "rename symbol" })
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
@@ -170,12 +108,12 @@ vim.keymap.set("n", "gr", function() Snacks.picker.lsp_references() end, { desc 
 vim.keymap.set("n", "gI", function() Snacks.picker.lsp_implementations() end, { desc = "go to implementation" })
 vim.keymap.set("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "find files" })
 vim.keymap.set("n", "<leader>fg", function() Snacks.picker.grep() end, { desc = "find grep" })
-vim.keymap.set("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "find buffers" })
+vim.keymap.set("n", "<leader>,", function() Snacks.picker.buffers() end, { desc = "find buffers" })
 
--- gitlinker
-vim.api.nvim_set_keymap('n', '<leader>gb',
-	'<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
-	{ silent = true })
-vim.api.nvim_set_keymap('v', '<leader>gb',
-	'<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
-	{})
+-- Disable mini.completion in Snacks picker window
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "snacks_picker_input",
+	desc = "Disable mini.completion for snacks picker",
+	group = vim.api.nvim_create_augroup("user_mini", {}),
+	command = "lua vim.b.minicompletion_disable=true",
+})
