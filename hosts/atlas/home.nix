@@ -62,6 +62,11 @@
     spotify
 
     melonds
+
+    planify
+    mission-center
+    htop
+    btop
   ];
 
   # Set GNOME settings + keybindings
