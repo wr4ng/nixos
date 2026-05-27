@@ -13,16 +13,12 @@
       enable = true;
       defaultEditor = true;
       extraPackages = with pkgs; [
-        nodejs_25
         nil
         lua-language-server
         tree-sitter
       ];
-      sideloadInitLua = true;
 
-      # Adopt new programs.neovim defaults (for nyx)
-      withRuby = false;
-      withPython3 = false;
+      sideloadInitLua = true;
     };
 
     home.packages = with pkgs; [

@@ -135,6 +135,10 @@
     };
   };
 
+  # Adopt new neovim default
+  programs.neovim.withRuby = false;
+  programs.neovim.withPython3 = false;
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
