@@ -42,6 +42,7 @@ vim.pack.add({
 	-- neo-tree.nvim dependencies
 	"https://github.com/nvim-lua/plenary.nvim",
 	"https://github.com/MunifTanjim/nui.nvim",
+	"https://github.com/sphamba/smear-cursor.nvim",
 })
 
 vim.cmd.colorscheme("catppuccin-mocha")
@@ -49,6 +50,9 @@ vim.cmd.colorscheme("catppuccin-mocha")
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("mini.completion").setup()
+
+vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("lua_ls")
 
 require("which-key").setup()
 vim.opt.timeout = true
@@ -60,6 +64,8 @@ require("snacks").setup({
 		enabled = true
 	}
 })
+
+require('smear_cursor').setup({})
 
 vim.keymap.set("i", "jj", "<ESC>", { desc = "exit insert mode", silent = true })
 vim.keymap.set("n", "<Tab>", "<cmd>bNext<CR>", { desc = "next buffer" })
@@ -132,5 +138,11 @@ require('neo-tree').setup({
 	enable_diagnostics = true,
 	window = {
 		position = "right",
+	},
+	filesystem = {
+		follow_current_file = {
+			enabled = true,
+			leave_dirs_open = false,
+		},
 	},
 })
