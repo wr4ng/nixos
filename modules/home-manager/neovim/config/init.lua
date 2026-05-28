@@ -35,6 +35,13 @@ vim.pack.add({
 	'https://github.com/folke/which-key.nvim',
 	'https://github.com/folke/snacks.nvim',
 	'https://github.com/lewis6991/gitsigns.nvim',
+	{
+		src = 'https://github.com/nvim-neo-tree/neo-tree.nvim',
+		version = vim.version.range('3')
+	},
+	-- neo-tree.nvim dependencies
+	"https://github.com/nvim-lua/plenary.nvim",
+	"https://github.com/MunifTanjim/nui.nvim",
 })
 
 vim.cmd.colorscheme("catppuccin-mocha")
@@ -116,4 +123,14 @@ vim.api.nvim_create_autocmd("FileType", {
 	desc = "Disable mini.completion for snacks picker",
 	group = vim.api.nvim_create_augroup("user_mini", {}),
 	command = "lua vim.b.minicompletion_disable=true",
+})
+
+-- neo-tree.nvim
+vim.keymap.set("n", "<leader>e", "<Cmd>Neotree<CR>")
+require('neo-tree').setup({
+	enable_git_status = true,
+	enable_diagnostics = true,
+	window = {
+		position = "right",
+	},
 })
