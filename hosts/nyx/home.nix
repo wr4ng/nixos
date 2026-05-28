@@ -74,6 +74,10 @@
     signal-desktop
 
     planify
+    mission-center
+    eloquent
+    switcheroo
+    cmatrix
   ];
 
   fonts.fontconfig.enable = true;
