@@ -13,6 +13,7 @@
       font.size = 14;
       settings = {
         enable_audio_bell = false;
+        disable_ligatures = "always";
         open_url_with = "default";
         detect_urls = "yes";
         show_hyperlink_targets = true;
