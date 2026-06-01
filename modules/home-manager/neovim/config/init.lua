@@ -61,8 +61,15 @@ vim.opt.timeoutlen = 300
 require("gitsigns").setup()
 require("snacks").setup({
 	picker = {
-		enabled = true
-	}
+		enabled = true,
+	},
+	lazygit = {},
+	styles = {
+		lazygit = {
+			width = 0.95,
+			height = 0.95,
+		},
+	},
 })
 
 require('smear_cursor').setup({})
@@ -122,6 +129,7 @@ vim.keymap.set("n", "gI", function() Snacks.picker.lsp_implementations() end, { 
 vim.keymap.set("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "find files" })
 vim.keymap.set("n", "<leader>fg", function() Snacks.picker.grep() end, { desc = "find grep" })
 vim.keymap.set("n", "<leader>,", function() Snacks.picker.buffers() end, { desc = "find buffers" })
+vim.keymap.set("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "find buffers" })
 
 -- Disable mini.completion in Snacks picker window
 vim.api.nvim_create_autocmd("FileType", {
