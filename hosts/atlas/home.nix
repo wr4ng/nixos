@@ -142,6 +142,8 @@
     };
   };
 
+  module.hledger.enable = true;
+
   # Adopt new neovim default
   programs.neovim.withRuby = false;
   programs.neovim.withPython3 = false;

@@ -68,9 +68,6 @@
     rust-analyzer
     clippy
 
-    hledger
-    hledger-web
-
     signal-desktop
 
     planify
@@ -148,9 +145,7 @@
     gtk4.theme = null; # Silence warning related to older `home.stateVersion`
   };
 
-  home.sessionVariables = {
-    LEDGER_FILE = "~/finances/main.journal";
-  };
+  module.hledger.enable = true;
 
   # Adopt new neovim default
   programs.neovim.withRuby = false;

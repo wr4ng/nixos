@@ -1,9 +1,11 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   imports = [
     ./shell.nix
     ./kitty.nix
     ./zellij
     ./neovim
+    ./hledger.nix
   ];
 
   module.shell.enable = lib.mkDefault true;
