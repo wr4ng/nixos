@@ -67,6 +67,8 @@
     mission-center
     htop
     btop
+
+    easyeffects
   ];
 
   # Set GNOME settings + keybindings
