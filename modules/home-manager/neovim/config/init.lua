@@ -53,6 +53,7 @@ require("mini.completion").setup()
 
 vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("nil_ls")
 
 require("which-key").setup()
 vim.opt.timeout = true
