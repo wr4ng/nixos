@@ -151,6 +151,11 @@
   programs.neovim.withRuby = false;
   programs.neovim.withPython3 = false;
 
+  # Adopt new yazi defaults
+  programs.yazi = {
+    shellWrapperName = "y"; # Silence warning related to older `home.stateVersion`
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
