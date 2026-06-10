@@ -111,7 +111,7 @@
       favorite-apps = [
         "org.gnome.Nautilus.desktop"
         "kitty.desktop"
-        "brave-browser.desktop"
+        "firefox.desktop"
         "obsidian.desktop"
         "code.desktop"
       ];
@@ -143,6 +143,50 @@
   };
 
   module.hledger.enable = true;
+
+  programs.firefox = {
+    enable = true;
+    profiles.wr4ng = {
+      name = "wrang";
+      isDefault = true;
+      settings = {
+        "sidebar.verticalTabs" = true;
+        # 0 = blank, 1 = home, 2 = last visited page, 3 = resume previous session
+        "browser.startup.page" = 3;
+      };
+      search = {
+        engines = {
+          "Nix Packages" = {
+            urls = [
+              {
+                template = "https://search.nixos.org/packages";
+                params = [
+                  {
+                    name = "type";
+                    value = "packages";
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+            icon = "https://nixos.wiki/favicon.png";
+            updateInterval = 24 * 60 * 60 * 1000; # every day
+            definedAliases = [ "@np" ];
+          };
+          "NixOS Wiki" = {
+            urls = [ { template = "https://nixos.wiki/index.php?search={searchTerms}"; } ];
+            icon = "https://nixos.wiki/favicon.png";
+            updateInterval = 24 * 60 * 60 * 1000; # every day
+            definedAliases = [ "@nw" ];
+          };
+        };
+      };
+    };
+
+  };
 
   # Adopt new neovim default
   programs.neovim.withRuby = false;
