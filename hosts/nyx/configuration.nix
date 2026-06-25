@@ -202,6 +202,10 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  # `bitwarden-desktop` currently depends on EOL electron version
+  # See: https://github.com/jaanjah/nixos-config/pull/42 and https://github.com/NixOS/nixpkgs/issues/526914
+  nixpkgs.config.permittedInsecurePackages = [ "electron-39.8.10" ];
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
