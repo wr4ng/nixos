@@ -52,7 +52,7 @@
     gnomeExtensions.wallpaper-slideshow
     pinta
     orca-slicer
-    bambu-studio
+    # bambu-studio
     nettools
     calibre
     pdfarranger
@@ -75,6 +75,11 @@
     eloquent
     switcheroo
     cmatrix
+
+	ffmpeg
+	handbrake
+	thunar
+	vlc
   ];
 
   fonts.fontconfig.enable = true;
