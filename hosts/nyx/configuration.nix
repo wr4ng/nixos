@@ -90,6 +90,8 @@
   # Steam
   module.steam.enable = true;
 
+  programs.thunar.enable = true;
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "dk";
@@ -146,6 +148,7 @@
   fonts.packages = with pkgs; [
     roboto
     source-sans-pro
+    montserrat
   ];
 
   # Allow unfree packages
@@ -157,6 +160,15 @@
     vim
     wget
     powertop
+
+    # Add GStreamer plugins for i.e. h265 support
+    gst_all_1.gstreamer
+    gst_all_1.gst-plugins-base
+    gst_all_1.gst-plugins-good
+    gst_all_1.gst-plugins-bad
+    gst_all_1.gst-plugins-ugly
+    gst_all_1.gst-libav
+    gst_all_1.gst-vaapi
   ];
 
   programs.git.enable = true;
@@ -171,7 +183,12 @@
     openDefaultPorts = true;
     user = "wr4ng";
     dataDir = "/home/wr4ng/syncthing";
-	configDir = "/home/wr4ng/.config/syncthing";
+    configDir = "/home/wr4ng/.config/syncthing";
+  };
+
+  # G-streamer: https://wiki.nixos.org/wiki/GStreamer
+  environment.variables = {
+    GST_PLUGIN_PATH = "/run/current-system/sw/lib/gstreamer-1.0/";
   };
 
   # Enable running non-nix binaries. See https://nix.dev/guides/faq.html#how-to-run-non-nix-executables

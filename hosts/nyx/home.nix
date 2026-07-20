@@ -76,10 +76,10 @@
     switcheroo
     cmatrix
 
-	ffmpeg
-	handbrake
-	thunar
-	vlc
+    ffmpeg
+    handbrake
+    vlc
+    exiftool
   ];
 
   fonts.fontconfig.enable = true;
@@ -133,6 +133,7 @@
   };
 
   home.pointerCursor = {
+    enable = true;
     name = "Banana";
     size = 32;
     package = pkgs.banana-cursor;
@@ -148,6 +149,18 @@
       package = pkgs.banana-cursor;
     };
     gtk4.theme = null; # Silence warning related to older `home.stateVersion`
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
+
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
   };
 
   module.hledger.enable = true;
