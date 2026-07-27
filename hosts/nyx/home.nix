@@ -70,7 +70,6 @@
 
     signal-desktop
 
-    planify
     mission-center
     eloquent
     switcheroo
