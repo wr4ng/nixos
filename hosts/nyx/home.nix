@@ -56,7 +56,7 @@
     nettools
     calibre
     pdfarranger
-    bitwarden-desktop
+    # bitwarden-desktop
     just
     # For LibreOffice Calc (Quantitative Sustainability)
     libreoffice-fresh
