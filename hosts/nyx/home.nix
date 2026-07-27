@@ -112,6 +112,11 @@
       command = "kitty";
       binding = "<Super>Return";
     };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      name = "Open Mission Center";
+      command = "missioncenter";
+      binding = "<Shift><Control>Escape";
+    };
     "org/gnome/shell/keybindings" = {
       show-screenshot-ui = [ "<Shift><Super>s" ];
     };
