@@ -174,6 +174,14 @@
     openFirewall = true;
   };
 
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+    user = "wr4ng";
+    dataDir = "/home/wr4ng/syncthing";
+    configDir = "/home/wr4ng/.config/syncthing";
+  };
+
   hardware.bluetooth.enable = true;
 
   # Enable running non-nix binaries. See https://nix.dev/guides/faq.html#how-to-run-non-nix-executables

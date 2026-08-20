@@ -69,6 +69,7 @@
     btop
 
     easyeffects
+    freecad
   ];
 
   # Set GNOME settings + keybindings
@@ -144,9 +145,11 @@
 
   module.hledger.enable = true;
 
-  # Adopt new neovim default
+  # New defaults based on warnings related to home.stateVersion:
   programs.neovim.withRuby = false;
   programs.neovim.withPython3 = false;
+  programs.yazi.shellWrapperName = "y";
+  programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
