@@ -18,6 +18,7 @@
         zstyle ':completion:*' menu select
         zstyle ':completion:*' special-dirs true
         zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
+        bindkey '^[[Z' reverse-menu-complete
         source <(just --completions zsh)
       '';
     };
