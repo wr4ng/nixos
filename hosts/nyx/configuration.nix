@@ -134,6 +134,15 @@
     ];
   };
 
+  users.users.caroline = {
+    shell = pkgs.zsh;
+    isNormalUser = true;
+    description = "Caroline <33";
+    extraGroups = [
+      "networkmanager"
+    ];
+  };
+
   programs.zsh.enable = true;
 
   home-manager = {
@@ -160,6 +169,7 @@
     vim
     wget
     powertop
+    google-chrome
 
     # Add GStreamer plugins for i.e. h265 support
     gst_all_1.gstreamer

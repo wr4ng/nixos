@@ -26,7 +26,6 @@
   # environment.
   home.packages = with pkgs; [
     nh
-    google-chrome
     brave
     spotify
     mpv
