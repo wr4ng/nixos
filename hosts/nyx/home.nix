@@ -165,6 +165,7 @@
   };
 
   module.hledger.enable = true;
+  module.flutter-dev.enable = true;
 
   # Adopt new neovim default
   programs.neovim.withRuby = false;

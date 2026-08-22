@@ -6,6 +6,7 @@
     ./zellij
     ./neovim
     ./hledger.nix
+	./flutter-dev.nix
   ];
 
   module.shell.enable = lib.mkDefault true;
