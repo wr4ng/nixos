@@ -73,8 +73,8 @@
 
     ffmpeg
     handbrake
-    vlc
-    exiftool
+
+    celluloid
   ];
 
   fonts.fontconfig.enable = true;
