@@ -74,6 +74,7 @@
     ffmpeg
     handbrake
 
+    rustdesk-flutter # rustdesk-flutter instead of rustdesk since the latter is not in binary cache
     celluloid
   ];
 
