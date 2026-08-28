@@ -16,25 +16,58 @@
     inputs.home-manager.nixosModules.default
   ];
 
-  # Bootloader.
-  boot.loader.grub = {
-    enable = true;
-    configurationLimit = 5;
-    efiSupport = true;
-    useOSProber = true;
-    devices = [ "nodev" ];
-    fontSize = 12;
-    extraEntries = ''
-      menuentry "Reboot" --class restart {
-        reboot
-      }
-      menuentry "Poweroff" --class shutdown {
-        halt
-      }
-    '';
-  };
-  boot.loader.timeout = 15; # Long timeout
+  boot.loader.timeout = 1;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Silent boot
+  boot.consoleLogLevel = 3;
+  boot.initrd.verbose = false;
+  boot.kernelParams = [
+    "quiet"
+    "rd.udev.log_level=3"
+    "rd.systemd.show_status=auto"
+  ];
+
+  # Limine bootloader
+  # - https://port8080.sh/posts/sdboot-to-limine/
+  # - https://github.com/m4r1vs/NixConfig/blob/main/nixos-modules/limine.nix
+  boot.loader.systemd-boot.enable = false;
+  boot.loader.limine = {
+    enable = true;
+    efiSupport = true;
+    secureBoot.enable = true;
+    enrollConfig = true;
+    panicOnChecksumMismatch = true;
+    maxGenerations = 5;
+    extraEntries = ''
+      /Windows Boot Manager
+      	protocol: efi
+      	path: uuid(9fa13198-8168-41ec-bfb9-f2c6830d2efe):/EFI/Microsoft/Boot/bootmgfw.efi
+    '';
+    extraConfig = ''
+      quiet: yes
+    '';
+    resolution = "1920x1200";
+    style = {
+      wallpapers = [ ../../assets/limine-splash.png ];
+      wallpaperStyle = "stretched";
+      interface = {
+        branding = "hello, friend";
+        resolution = "1920x1200";
+      };
+      graphicalTerminal = {
+        palette = "1e1e2e;f38ba8;a6e3a1;f9e2af;89b4fa;f5c2e7;94e2d5;cdd6f4";
+        brightPalette = "585b70;f38ba8;a6e3a1;f9e2af;89b4fa;f5c2e7;94e2d5;cdd6f4";
+        background = "8A15130F";
+        foreground = "cdd6f4";
+        margin = 0;
+        font = {
+          scale = "2x2";
+          spacing = 1;
+        };
+      };
+    };
+  };
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -171,6 +204,8 @@
     powertop
     google-chrome
 
+    # Command-line utility for working with Secure Boot (status, key enrollment, etc.)
+    sbctl
   ];
 
   programs.git.enable = true;
