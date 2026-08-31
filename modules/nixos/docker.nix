@@ -1,11 +1,18 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 with lib;
 
-let cfg = config.module.docker;
-in {
+let
+  cfg = config.modules.docker;
+in
+{
 
-  options.module.docker = {
+  options.modules.docker = {
     enable = mkEnableOption "enable docker module";
     username = mkOption {
       type = types.str;
@@ -16,7 +23,7 @@ in {
 
   config = mkIf cfg.enable {
     virtualisation.docker.enable = true;
-		users.users.${cfg.username}.extraGroups = [ "docker" ];
+    users.users.${cfg.username}.extraGroups = [ "docker" ];
     environment.systemPackages = [
       pkgs.lazydocker
     ];

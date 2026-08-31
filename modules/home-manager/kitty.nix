@@ -1,8 +1,16 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
 
-  options = { module.kitty.enable = lib.mkEnableOption "enable kitty module"; };
+  options = {
+    modules.kitty.enable = lib.mkEnableOption "enable kitty module";
+  };
 
-  config = lib.mkIf config.module.kitty.enable {
+  config = lib.mkIf config.modules.kitty.enable {
     programs.kitty = {
       enable = true;
       enableGitIntegration = true;

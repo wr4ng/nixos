@@ -6,11 +6,11 @@
     ./zellij
     ./neovim
     ./hledger.nix
-	./flutter-dev.nix
+    ./flutter-dev.nix
   ];
 
-  module.shell.enable = lib.mkDefault true;
-  module.kitty.enable = lib.mkDefault true;
-  module.zellij.enable = lib.mkDefault true;
-  module.neovim.enable = lib.mkDefault true;
+  modules.shell.enable = lib.mkDefault true;
+  modules.kitty.enable = lib.mkDefault true;
+  modules.zellij.enable = lib.mkDefault true;
+  modules.neovim.enable = lib.mkDefault true;
 }

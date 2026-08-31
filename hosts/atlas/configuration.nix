@@ -90,12 +90,14 @@
   # Power management
   powerManagement.enable = true;
 
-  # Docker
-  module.docker.enable = true;
-  module.docker.username = "wr4ng";
-
-  # Steam
-  module.steam.enable = true;
+  # My modules
+  modules = {
+    docker = {
+      enable = true;
+      username = "wr4ng";
+    };
+    steam.enable = true;
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {

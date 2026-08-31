@@ -116,12 +116,15 @@
   # Power management
   powerManagement.enable = true;
 
-  # Docker
-  module.docker.enable = true;
-  module.docker.username = "wr4ng";
-
-  # Steam
-  module.steam.enable = true;
+  modules = {
+    # Docker
+    docker = {
+      enable = true;
+      username = "wr4ng";
+    };
+    # Steam
+    steam.enable = true;
+  };
 
   programs.thunar.enable = true;
 

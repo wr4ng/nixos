@@ -6,9 +6,9 @@
 }:
 
 {
-  options.module.neovim.enable = lib.mkEnableOption "enables neovim";
+  options.modules.neovim.enable = lib.mkEnableOption "enables neovim";
 
-  config = lib.mkIf config.module.neovim.enable {
+  config = lib.mkIf config.modules.neovim.enable {
     programs.neovim = {
       enable = true;
       defaultEditor = true;

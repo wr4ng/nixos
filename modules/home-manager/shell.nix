@@ -2,10 +2,10 @@
 {
 
   options = {
-    module.shell.enable = lib.mkEnableOption "enable shell module";
+    modules.shell.enable = lib.mkEnableOption "enable shell module";
   };
 
-  config = lib.mkIf config.module.shell.enable {
+  config = lib.mkIf config.modules.shell.enable {
     programs.zsh = {
       enable = true;
       autosuggestion.enable = true;

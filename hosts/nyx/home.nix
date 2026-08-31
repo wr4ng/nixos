@@ -22,6 +22,11 @@
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
+  modules = {
+    hledger.enable = true;
+    flutter-dev.enable = true;
+  };
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -163,9 +168,6 @@
       gtk-application-prefer-dark-theme = 1;
     };
   };
-
-  module.hledger.enable = true;
-  module.flutter-dev.enable = true;
 
   # Adopt new neovim default
   programs.neovim.withRuby = false;

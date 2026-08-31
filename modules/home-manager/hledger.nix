@@ -6,9 +6,9 @@
 }:
 
 {
-  options.module.hledger.enable = lib.mkEnableOption "enables hledger module";
+  options.modules.hledger.enable = lib.mkEnableOption "enables hledger module";
 
-  config = lib.mkIf config.module.hledger.enable {
+  config = lib.mkIf config.modules.hledger.enable {
     home.packages = with pkgs; [
       hledger
       hledger-web

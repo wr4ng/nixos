@@ -1,9 +1,16 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 with lib;
-let cfg = config.module.steam;
-in {
+let
+  cfg = config.modules.steam;
+in
+{
 
-  options.module.steam  = {
+  options.modules.steam = {
     enable = mkEnableOption "enable steam module";
   };
 

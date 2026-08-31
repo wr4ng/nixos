@@ -1,11 +1,13 @@
-{ lib, config,  ... }:
+{ lib, config, ... }:
 
 with lib;
 
-let cfg = config.module.virt-manager;
-in {
+let
+  cfg = config.modules.virt-manager;
+in
+{
 
-  options.module.virt-manager  = {
+  options.modules.virt-manager = {
     enable = mkEnableOption "enable virt-manager  module";
     username = mkOption {
       type = types.str;
@@ -16,7 +18,7 @@ in {
 
   config = mkIf cfg.enable {
     programs.virt-manager.enable = true;
-    users.groups.libvirtd.members = ["${cfg.username}"];
+    users.groups.libvirtd.members = [ "${cfg.username}" ];
     virtualisation.libvirtd.enable = true;
     virtualisation.spiceUSBRedirection.enable = true;
   };

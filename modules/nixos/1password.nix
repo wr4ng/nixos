@@ -1,11 +1,13 @@
-{ lib, config,  ... }:
+{ lib, config, ... }:
 
 with lib;
 
-let cfg = config.module.onepassword;
-in {
+let
+  cfg = config.modules.onepassword;
+in
+{
 
-  options.module.onepassword = {
+  options.modules.onepassword = {
     enable = mkEnableOption "enable onepassword module";
     username = mkOption {
       type = types.str;

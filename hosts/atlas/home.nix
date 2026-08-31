@@ -143,7 +143,7 @@
     };
   };
 
-  module.hledger.enable = true;
+  modules.hledger.enable = true;
 
   # New defaults based on warnings related to home.stateVersion:
   programs.neovim.withRuby = false;
