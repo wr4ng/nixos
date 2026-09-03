@@ -40,6 +40,11 @@
     ];
   };
 
+  fileSystems."/home/wr4ng/mount/data" = {
+    device = "/dev/disk/by-uuid/B840BD9840BD5DB6";
+    fsType = "ntfs";
+  };
+
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
