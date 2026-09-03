@@ -44,5 +44,9 @@
         tab_powerline_style = "round";
       };
     };
+
+    home.packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+    ];
   };
 }

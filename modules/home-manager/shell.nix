@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
 
   options = {
@@ -86,5 +91,19 @@
       enable = true;
       enableZshIntegration = true;
     };
+
+    home.packages = with pkgs; [
+      gh
+      lazygit
+      tree
+      ripgrep
+      fd
+      zip
+      unzip
+      file
+      just
+      htop
+      btop
+    ];
   };
 }

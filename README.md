@@ -9,7 +9,7 @@ sudo nixos-rebuild switch --flake .#{SYSTEM}
 sudo nixos-rebuild switch --flake ~/nixos#nyx
 
 # Rebuild desktop
-sudo nixos-rebuild switch --flake .#atlas
+sudo nixos-rebuild switch --flake .#prometheus
 ```
 
 After that `nh` can be used to rebuild and switch to new generations:

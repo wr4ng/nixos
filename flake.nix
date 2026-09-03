@@ -10,6 +10,9 @@
   };
 
   outputs = inputs: {
+
+    homeManagerModules.default = ./modules/home-manager;
+
     nixosConfigurations.nyx = inputs.nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
@@ -55,6 +58,19 @@
       ];
     };
 
-    homeManagerModules.default = ./modules/home-manager;
+    nixosConfigurations.prometheus = inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [
+        {
+          nix.settings.experimental-features = [
+            "nix-command"
+            "flakes"
+          ];
+        }
+        ./hosts/prometheus/configuration.nix
+        ./modules/nixos
+        inputs.home-manager.nixosModules.default
+      ];
+    };
   };
 }

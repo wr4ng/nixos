@@ -9,6 +9,7 @@
   options.modules.theme.enable = lib.mkEnableOption "enables theme module";
 
   config = lib.mkIf config.modules.theme.enable {
+    # 🍌
     home.pointerCursor = {
       enable = true;
       name = "Banana";
