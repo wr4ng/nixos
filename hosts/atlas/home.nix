@@ -126,23 +126,6 @@
     };
   };
 
-  home.pointerCursor = {
-    name = "Banana";
-    size = 32;
-    package = pkgs.banana-cursor;
-    x11.enable = true;
-    gtk.enable = true;
-  };
-
-  gtk = {
-    enable = true;
-    cursorTheme = {
-      name = "Banana";
-      size = 32;
-      package = pkgs.banana-cursor;
-    };
-  };
-
   modules.hledger.enable = true;
 
   # New defaults based on warnings related to home.stateVersion:
