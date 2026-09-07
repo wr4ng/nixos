@@ -81,6 +81,11 @@
 
     rustdesk-flutter # rustdesk-flutter instead of rustdesk since the latter is not in binary cache
     celluloid
+
+    # Needed for 02246 Model Checking
+    teams-for-linux
+    # z3
+    # prism-model-checker
   ];
 
   fonts.fontconfig.enable = true;
