@@ -16,6 +16,7 @@
         nil
         lua-language-server
         tree-sitter
+        pyright
       ];
 
       sideloadInitLua = true;
