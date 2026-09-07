@@ -21,6 +21,11 @@
     };
   };
 
+  services.syncthing = {
+    enable = true;
+    tray.enable = true;
+  };
+
   modules.hledger.enable = true;
 
   home.packages = with pkgs; [
@@ -50,7 +55,7 @@
     orca-slicer
     signal-desktop
     switcheroo
-	solaar
+    solaar
 
     # Video + Audio
     ffmpeg
@@ -59,9 +64,10 @@
     celluloid
     # qpwgraph
     # pavucontrol
-    # easyeffects
+    easyeffects
 
-	davinci-resolve-studio
+    davinci-resolve-studio
+    r2modman
   ];
 
   fonts.fontconfig.enable = true;
