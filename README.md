@@ -23,6 +23,11 @@ nh os boot .
 nh clean all --keep 1   # --dry
 ```
 
+## Stuff I use once in a while
+```shell
+nix run nixpkgs#qdiskinfo # A CrystalDiskInfo alternative for Linux. Shows S.M.A.R.T information
+```
+
 ## Running `Appimage` files
 
 ```shell
