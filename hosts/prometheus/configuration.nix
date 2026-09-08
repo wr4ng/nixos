@@ -177,6 +177,17 @@
 
   nixpkgs.config.allowUnfree = true;
 
+
+  nixpkgs.overlays = [
+    (final: prev: {
+	  # Apply handbrake overlay to add driver paths allowing i.e. NVENC encoder to be used
+	  # See: https://github.com/NixOS/nixpkgs/issues/244934
+      handbrake = prev.handbrake.overrideAttrs (previous: {
+        nativeBuildInputs = (previous.nativeBuildInputs or [ ]) ++ [ pkgs.autoAddDriverRunpath ];
+      });
+    })
+  ];
+
   environment.systemPackages = with pkgs; [
     vim
     wget
