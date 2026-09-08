@@ -22,6 +22,7 @@
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
         show-battery-percentage = true;
+        enable-hot-corners = false;
       };
       "org/gnome/desktop/peripherals/mouse" = {
         accel-profile = "flat";
