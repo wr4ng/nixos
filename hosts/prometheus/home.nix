@@ -63,11 +63,15 @@
     mpv
     celluloid
     # qpwgraph
-    # pavucontrol
+    pavucontrol
     easyeffects
 
     davinci-resolve-studio
     r2modman
+
+    # emulation
+    mgba
+    azahar
   ];
 
   fonts.fontconfig.enable = true;

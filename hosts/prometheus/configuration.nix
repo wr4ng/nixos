@@ -68,8 +68,9 @@
     "rd.systemd.show_status=auto"
   ];
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Use kernel 7.1.12
+  # Warhammer 40.000: Space Marine II has issues with newest kernel. See: https://github.com/ValveSoftware/Proton/issues/8072#issuecomment-5607795869
+  boot.kernelPackages = pkgs.linuxPackages_7_1;
 
   networking.hostName = "prometheus";
   networking.networkmanager.enable = true;
@@ -151,6 +152,8 @@
     steam.enable = true;
   };
 
+  hardware.steam-hardware.enable = true;
+
   programs.localsend = {
     enable = true;
     openFirewall = true;
@@ -177,16 +180,28 @@
 
   nixpkgs.config.allowUnfree = true;
 
-
   nixpkgs.overlays = [
     (final: prev: {
-	  # Apply handbrake overlay to add driver paths allowing i.e. NVENC encoder to be used
-	  # See: https://github.com/NixOS/nixpkgs/issues/244934
+      # Apply handbrake overlay to add driver paths allowing i.e. NVENC encoder to be used
+      # See: https://github.com/NixOS/nixpkgs/issues/244934
       handbrake = prev.handbrake.overrideAttrs (previous: {
         nativeBuildInputs = (previous.nativeBuildInputs or [ ]) ++ [ pkgs.autoAddDriverRunpath ];
       });
     })
   ];
+
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs; [
+      # thunar-archive-plugin # Requires an Archive manager like file-roller, ark, etc
+      thunar-volman
+    ];
+  };
+  # If xfce is not used as desktop and therefore xfconf is not enabled, preference changes are discarded.
+  # In that case enable the xfconf program manually to be able to save preferences:
+  programs.xfconf.enable = true;
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.tumbler.enable = true; # Thumbnail support for images
 
   environment.systemPackages = with pkgs; [
     vim
@@ -194,6 +209,12 @@
 
     # Command-line utility for working with Secure Boot (status, key enrollment, etc.)
     sbctl
+
+    # thunar thumbnails
+    ffmpegthumbnailer
+
+    kdePackages.dolphin # This is the actual dolphin package
+    kdePackages.qtsvg
   ];
 
   # Enable running non-nix binaries. See https://nix.dev/guides/faq.html#how-to-run-non-nix-executables

@@ -15,6 +15,7 @@
       gnomeExtensions.appindicator
       gnomeExtensions.dash-to-dock
       gnomeExtensions.dash-to-panel
+      gnomeExtensions.caffeine
     ];
 
     # GNOME settings
@@ -50,6 +51,7 @@
           appindicator.extensionUuid
           # dash-to-dock.extensionUuid
           dash-to-panel.extensionUuid
+          caffeine.extensionUuid
         ];
       };
       "org/gnome/shell/keybindings" = {
