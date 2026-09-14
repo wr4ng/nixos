@@ -33,7 +33,7 @@
       enableZshIntegration = true;
       settings = {
         add_newline = false;
-        format = "($nix_shell)$username$hostname( $shlvl)( $directory)( $git_branch$git_commit$git_state$git_status)( $cmd_duration)( $character)";
+        format = "($nix_shell)$username$hostname( $shlvl)( $directory)( $git_branch$git_commit$git_state$git_status)($python)( $cmd_duration)( $character)";
         username = {
           format = "[$user]($style)";
           style_user = "bold cyan";
