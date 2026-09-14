@@ -72,6 +72,8 @@
     # emulation
     mgba
     azahar
+
+    uv
   ];
 
   fonts.fontconfig.enable = true;
