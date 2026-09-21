@@ -83,7 +83,7 @@
 
     # Needed for 02246 Model Checking
     teams-for-linux
-    # z3
+    z3
     # prism-model-checker
   ];
 
