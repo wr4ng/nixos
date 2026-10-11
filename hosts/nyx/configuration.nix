@@ -124,6 +124,10 @@
     };
     # Steam
     steam.enable = true;
+    # DTU
+    dtu = {
+      program-verification.enable = true;
+    };
   };
 
   programs.thunar.enable = true;
@@ -233,10 +237,7 @@
 
   # Enable running non-nix binaries. See https://nix.dev/guides/faq.html#how-to-run-non-nix-executables
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = [
-    # Add any missing dynamic libraries for unpackaged programs
-    # here, NOT in environment.systemPackages
-  ];
+  programs.nix-ld.libraries = [ ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

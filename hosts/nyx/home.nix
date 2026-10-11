@@ -83,8 +83,6 @@
 
     # Needed for 02246 Model Checking
     teams-for-linux
-    z3
-    # prism-model-checker
   ];
 
   fonts.fontconfig.enable = true;
