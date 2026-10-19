@@ -149,6 +149,9 @@
       username = "wr4ng";
     };
     steam.enable = true;
+    dtu = {
+      program-verification.enable = true;
+    };
   };
 
   hardware.steam-hardware.enable = true;
