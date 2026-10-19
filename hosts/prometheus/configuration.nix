@@ -68,9 +68,8 @@
     "rd.systemd.show_status=auto"
   ];
 
-  # Use kernel 7.1.12
-  # Warhammer 40.000: Space Marine II has issues with newest kernel. See: https://github.com/ValveSoftware/Proton/issues/8072#issuecomment-5607795869
-  boot.kernelPackages = pkgs.linuxPackages_7_1;
+  # Use latest kernel.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "prometheus";
   networking.networkmanager.enable = true;
